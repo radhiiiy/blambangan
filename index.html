@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
-        content="Website pembelajaran interaktif sejarah Kerajaan Blambangan: pre-test, materi, mini game, dan post-test.">
+        content="Website pembelajaran interaktif sejarah Kerajaan Blambangan: materi interaktif dengan mini game di sela-sela bab.">
     <meta name="theme-color" content="#3b2a1e">
     <title>Jejak Blambangan - Belajar Sejarah Interaktif</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -341,12 +341,6 @@
             /* =====================================================================
                1. DATA KONTEN
                ===================================================================== */
-            const TOPIC_LABEL = {
-                asal: 'Asal-usul',
-                tokoh: 'Tokoh & Perang Bayu',
-                peninggalan: 'Peninggalan'
-            };
-
             const CHAPTERS = [
                 {
                     id: 'asal',
@@ -482,87 +476,6 @@
                 }
             ];
 
-            const PRE_TEST = [
-                {
-                    id: 'pre1', topic: 'asal', q: 'Di manakah letak pusat Kerajaan Blambangan?',
-                    options: ['Ujung barat Pulau Jawa', 'Ujung timur Pulau Jawa (sekitar Banyuwangi)', 'Pesisir selatan Sumatra', 'Pedalaman Kalimantan'], answer: 1,
-                    explain: 'Blambangan berada di ujung timur Pulau Jawa, kawasan yang kini dikenal sebagai Banyuwangi dan sekitarnya.'
-                },
-                {
-                    id: 'pre2', topic: 'asal', q: 'Blambangan sering dijuluki sebagai...',
-                    options: ['Kerajaan Islam pertama di Jawa', 'Kerajaan maritim terbesar di Sumatra', 'Kerajaan Hindu terakhir di Jawa', 'Kerajaan Buddha tertua di Nusantara'], answer: 2,
-                    explain: 'Blambangan mempertahankan tradisi Hindu hingga abad ke-18, sehingga disebut kerajaan Hindu terakhir di Jawa.'
-                },
-                {
-                    id: 'pre3', topic: 'tokoh', q: 'Siapakah tokoh yang memimpin rakyat Blambangan dalam Perang Bayu?',
-                    options: ['Pangeran Jagapati', 'Sultan Agung', 'Pangeran Diponegoro', 'Imam Bonjol'], answer: 0,
-                    explain: 'Pangeran Jagapati (Mas Rempeg) memimpin Perang Bayu melawan VOC pada 1771-1772.'
-                },
-                {
-                    id: 'pre4', topic: 'tokoh', q: 'Perang Bayu dilancarkan rakyat Blambangan untuk melawan...',
-                    options: ['Kerajaan Sriwijaya', 'Pasukan Portugis di Malaka', 'VOC', 'Kesultanan Demak'], answer: 2,
-                    explain: 'Perang Bayu adalah perlawanan rakyat Blambangan terhadap VOC.'
-                },
-                {
-                    id: 'pre5', topic: 'peninggalan', q: 'Tarian khas Banyuwangi yang menjadi warisan budaya Blambangan adalah...',
-                    options: ['Saman', 'Pendet', 'Jaipong', 'Gandrung'], answer: 3,
-                    explain: 'Gandrung adalah tari ikon Banyuwangi yang berakar dari budaya masyarakat Blambangan.'
-                }
-            ];
-
-            const POST_TEST = [
-                {
-                    id: 'post1', topic: 'asal', q: 'Wilayah bekas Blambangan kini sebagian besar menjadi bagian dari kabupaten...',
-                    options: ['Malang', 'Cirebon', 'Banyuwangi', 'Klungkung'], answer: 2,
-                    explain: 'Pusat Blambangan berada di kawasan yang sekarang menjadi Kabupaten Banyuwangi.'
-                },
-                {
-                    id: 'post2', topic: 'asal', q: 'Dalam Perang Paregreg (sekitar 1404-1406), penguasa wilayah timur dari Blambangan yang berhadapan dengan Wikramawardhana adalah...',
-                    options: ['Gajah Mada', 'Bhre Wirabumi', 'Airlangga', 'Jayabaya'], answer: 1,
-                    explain: 'Bhre Wirabumi, penguasa wilayah timur yang berpusat di Blambangan, kalah dalam Perang Paregreg.'
-                },
-                {
-                    id: 'post3', topic: 'asal', q: 'Mengapa Blambangan menjadi wilayah yang diperebutkan banyak pihak?',
-                    options: ['Karena tidak berpenduduk', 'Karena letaknya strategis di ujung timur Jawa dan wilayahnya subur', 'Karena menjadi ibu kota Mataram', 'Karena merupakan pusat Kerajaan Sriwijaya'], answer: 1,
-                    explain: 'Letak strategis menghadap Selat Bali dan tanah yang subur membuat Mataram, Bali, dan VOC saling berebut pengaruh.'
-                },
-                {
-                    id: 'post4', topic: 'tokoh', q: 'Raja Blambangan yang berjaya pada abad ke-17 dengan pusat di Macanputih adalah...',
-                    options: ['Hayam Wuruk', 'Ken Arok', 'Raden Wijaya', 'Prabu Tawang Alun'], answer: 3,
-                    explain: 'Prabu Tawang Alun memperkuat Blambangan pada abad ke-17 dengan pusat pemerintahan di Macanputih.'
-                },
-                {
-                    id: 'post5', topic: 'tokoh', q: 'Perlawanan rakyat Blambangan terhadap VOC pada sekitar 1767 dipimpin oleh...',
-                    options: ['Untung Suropati', 'Wong Agung Wilis', 'Trunojoyo', 'Pattimura'], answer: 1,
-                    explain: 'Wong Agung Wilis memimpin perlawanan Blambangan ketika VOC mulai menguasai wilayah tersebut.'
-                },
-                {
-                    id: 'post6', topic: 'tokoh', q: 'Apa arti istilah "puputan" dalam Puputan Bayu?',
-                    options: ['Perjanjian damai', 'Upacara panen', 'Bertempur habis-habisan dan pantang menyerah', 'Tarian penyambutan tamu'], answer: 2,
-                    explain: 'Puputan berarti bertempur sampai titik darah penghabisan tanpa menyerah.'
-                },
-                {
-                    id: 'post7', topic: 'tokoh', q: 'Puncak Perang Bayu yang kini diperingati sebagai Hari Jadi Banyuwangi terjadi pada...',
-                    options: ['18 Desember 1871', '20 Mei 1908', '28 Oktober 1928', '18 Desember 1771'], answer: 3,
-                    explain: 'Puncak Puputan Bayu pada 18 Desember 1771 ditetapkan sebagai Hari Jadi Banyuwangi.'
-                },
-                {
-                    id: 'post8', topic: 'peninggalan', q: 'Masyarakat yang dianggap keturunan Blambangan dan tinggal di Banyuwangi dikenal sebagai suku...',
-                    options: ['Baduy', 'Osing', 'Sasak', 'Tengger'], answer: 1,
-                    explain: 'Suku Osing (Using) dianggap sebagai keturunan masyarakat Blambangan.'
-                },
-                {
-                    id: 'post9', topic: 'peninggalan', q: 'Ritual bersih desa di Banyuwangi dengan penari yang menari dalam keadaan trance bernama...',
-                    options: ['Reog', 'Kecak', 'Seblang', 'Sintren'], answer: 2,
-                    explain: 'Seblang diselenggarakan antara lain di Desa Olehsari dan Bakungan, Banyuwangi.'
-                },
-                {
-                    id: 'post10', topic: 'peninggalan', q: 'Pada awalnya, tari Gandrung berkaitan dengan...',
-                    options: ['Ungkapan syukur atas panen dan pemujaan Dewi Sri', 'Upacara pemakaman raja', 'Hiburan istana Mataram', 'Latihan perang prajurit VOC'], answer: 0,
-                    explain: 'Gandrung bermula sebagai ungkapan syukur panen yang berkaitan dengan Dewi Sri, lalu berkembang menjadi hiburan rakyat.'
-                }
-            ];
-
             const GAME_POOL = [
                 {
                     q: 'Kapan Perang Bayu berlangsung?', options: ['Sekitar 1571-1572', 'Sekitar 1671-1672', 'Sekitar 1771-1772', 'Sekitar 1871-1872'], answer: 2,
@@ -614,7 +527,13 @@
                 }
             ];
 
-            const GAME_CONFIG = { total: 10, timeMs: 15000, feedbackMs: 2400 };
+            /* Game disisipkan di sela-sela bab: Bab 1 -> Game 1 -> Bab 2 -> Game 2 -> Bab 3.
+               Soal dibagi dua (indeks genap untuk Game 1, ganjil untuk Game 2) agar tidak berulang. */
+            const GAME_CONFIG = { timeMs: 15000, feedbackMs: 2400 };
+            const GAME_ROUNDS = [
+                { id: 'game1', pool: GAME_POOL.filter((_, i) => i % 2 === 0) },
+                { id: 'game2', pool: GAME_POOL.filter((_, i) => i % 2 === 1) }
+            ];
             const LETTERS = ['A', 'B', 'C', 'D'];
 
             /* =====================================================================
@@ -635,13 +554,11 @@
                 return a;
             }
 
-            const scoreOf = (bank, answers) => bank.reduce((sum, q, i) => sum + (answers[i] === q.answer ? 1 : 0), 0);
-
-            /* =====================================================================
+                        /* =====================================================================
                3. PENYIMPANAN & STATE
                ===================================================================== */
             const Store = (() => {
-                const KEY = 'jejak-blambangan:v1';
+                const KEY = 'jejak-blambangan:v2';
                 let persistent = true;
                 let memoryCopy = null;
                 try {
@@ -679,49 +596,24 @@
                 };
             })();
 
-            function defaultTest(bank) {
-                return { index: 0, answers: bank.map(() => null), done: false, score: 0 };
-            }
-
             function defaultState() {
                 return {
-                    v: 1,
+                    v: 2,
                     name: '',
-                    tests: { pre: defaultTest(PRE_TEST), post: defaultTest(POST_TEST) },
                     materi: {
                         current: CHAPTERS[0].id,
                         progress: Object.fromEntries(CHAPTERS.map((c) => [c.id, 0])),
                         done: Object.fromEntries(CHAPTERS.map((c) => [c.id, false]))
                     },
-                    game: { best: 0, last: 0, plays: 0 }
+                    game: { rounds: GAME_ROUNDS.map(() => ({ best: 0, last: 0, plays: 0 })) }
                 };
             }
 
             /* Memvalidasi data dari Local Storage agar data rusak atau dimanipulasi tidak merusak aplikasi. */
-            function sanitizeTest(raw, bank) {
-                const out = defaultTest(bank);
-                if (!raw || typeof raw !== 'object') return out;
-                if (Array.isArray(raw.answers)) {
-                    out.answers = bank.map((q, i) => {
-                        const v = raw.answers[i];
-                        return Number.isInteger(v) && v >= 0 && v < q.options.length ? v : null;
-                    });
-                }
-                const firstOpen = out.answers.indexOf(null);
-                out.done = raw.done === true && firstOpen === -1;
-                out.score = out.done ? scoreOf(bank, out.answers) : 0;
-                const maxIndex = firstOpen === -1 ? bank.length - 1 : firstOpen;
-                out.index = Number.isInteger(raw.index) ? clamp(raw.index, 0, maxIndex) : maxIndex;
-                return out;
-            }
-
             function sanitizeState(raw) {
                 const s = defaultState();
                 if (!raw || typeof raw !== 'object') return s;
                 if (typeof raw.name === 'string') s.name = raw.name.trim().slice(0, 40);
-                const tests = raw.tests && typeof raw.tests === 'object' ? raw.tests : {};
-                s.tests.pre = sanitizeTest(tests.pre, PRE_TEST);
-                s.tests.post = sanitizeTest(tests.post, POST_TEST);
                 const m = raw.materi;
                 if (m && typeof m === 'object') {
                     CHAPTERS.forEach((c) => {
@@ -732,12 +624,16 @@
                     });
                     if (CHAPTERS.some((c) => c.id === m.current)) s.materi.current = m.current;
                 }
-                const g = raw.game;
-                if (g && typeof g === 'object') {
-                    s.game.best = Number.isFinite(g.best) ? Math.max(0, Math.round(g.best)) : 0;
-                    s.game.last = Number.isFinite(g.last) ? Math.max(0, Math.round(g.last)) : 0;
-                    s.game.plays = Number.isInteger(g.plays) ? Math.max(0, g.plays) : 0;
-                }
+                const g = raw.game && Array.isArray(raw.game.rounds) ? raw.game.rounds : [];
+                s.game.rounds = GAME_ROUNDS.map((_, i) => {
+                    const r = g[i];
+                    if (!r || typeof r !== 'object') return { best: 0, last: 0, plays: 0 };
+                    return {
+                        best: Number.isFinite(r.best) ? Math.max(0, Math.round(r.best)) : 0,
+                        last: Number.isFinite(r.last) ? Math.max(0, Math.round(r.last)) : 0,
+                        plays: Number.isInteger(r.plays) ? Math.max(0, r.plays) : 0
+                    };
+                });
                 return s;
             }
 
@@ -748,24 +644,28 @@
                4. ALUR TAHAPAN & GUARD
                ===================================================================== */
             const STAGES = [
-                { id: 'daftar', label: 'Mulai', title: 'Mulai' },
-                { id: 'pre', label: 'Pre-Test', title: 'Pre-Test' },
-                { id: 'materi', label: 'Materi', title: 'Materi' },
-                { id: 'game', label: 'Mini Game', title: 'Mini Game' },
-                { id: 'post', label: 'Post-Test', title: 'Post-Test' },
-                { id: 'hasil', label: 'Hasil', title: 'Hasil Belajar' }
+                { id: 'daftar', kind: 'daftar', label: 'Mulai', title: 'Mulai' },
+                { id: 'bab1', kind: 'bab', idx: 0, label: 'Bab 1', title: 'Bab 1' },
+                { id: 'game1', kind: 'game', idx: 0, label: 'Game 1', title: 'Mini Game 1' },
+                { id: 'bab2', kind: 'bab', idx: 1, label: 'Bab 2', title: 'Bab 2' },
+                { id: 'game2', kind: 'game', idx: 1, label: 'Game 2', title: 'Mini Game 2' },
+                { id: 'bab3', kind: 'bab', idx: 2, label: 'Bab 3', title: 'Bab 3' },
+                { id: 'hasil', kind: 'hasil', label: 'Hasil', title: 'Hasil Belajar' }
             ];
             const ORDER = STAGES.map((s) => s.id);
 
             const hasName = () => state.name.length >= 2;
             const materiDone = () => CHAPTERS.every((c) => state.materi.done[c.id]);
+            const chapterDone = (i) => !!state.materi.done[CHAPTERS[i].id];
+            const gamePlayed = (i) => state.game.rounds[i].plays > 0;
 
             const PREREQS = [
-                { stage: 'pre', ok: hasName, msg: 'Isi nama siswa terlebih dahulu di halaman awal.' },
-                { stage: 'materi', ok: () => state.tests.pre.done, msg: 'Selesaikan Pre-Test terlebih dahulu.' },
-                { stage: 'game', ok: materiDone, msg: 'Tandai selesai semua bab materi sebelum bermain game.' },
-                { stage: 'post', ok: () => state.game.plays > 0, msg: 'Selesaikan mini game sebelum mengerjakan Post-Test.' },
-                { stage: 'hasil', ok: () => state.tests.post.done, msg: 'Selesaikan Post-Test untuk melihat dashboard hasil.' }
+                { stage: 'bab1', ok: hasName, msg: 'Isi nama siswa terlebih dahulu di halaman awal.' },
+                { stage: 'game1', ok: () => chapterDone(0), msg: 'Tandai selesai Bab 1 sebelum bermain Game 1.' },
+                { stage: 'bab2', ok: () => gamePlayed(0), msg: 'Mainkan Game 1 terlebih dahulu sebelum lanjut ke Bab 2.' },
+                { stage: 'game2', ok: () => chapterDone(1), msg: 'Tandai selesai Bab 2 sebelum bermain Game 2.' },
+                { stage: 'bab3', ok: () => gamePlayed(1), msg: 'Mainkan Game 2 terlebih dahulu sebelum lanjut ke Bab 3.' },
+                { stage: 'hasil', ok: () => chapterDone(2), msg: 'Selesaikan Bab 3 untuk melihat dashboard hasil.' }
             ];
 
             function failedPrereqs(id) {
@@ -783,14 +683,12 @@
             }
 
             function isStageDone(id) {
-                switch (id) {
-                    case 'daftar': return hasName();
-                    case 'pre': return state.tests.pre.done;
-                    case 'materi': return materiDone();
-                    case 'game': return state.game.plays > 0;
-                    case 'post': return state.tests.post.done;
-                    default: return false;
-                }
+                const st = STAGES.find((x) => x.id === id);
+                if (!st) return false;
+                if (st.kind === 'daftar') return hasName();
+                if (st.kind === 'bab') return chapterDone(st.idx);
+                if (st.kind === 'game') return gamePlayed(st.idx);
+                return false;
             }
 
             /* =====================================================================
@@ -870,7 +768,7 @@
             }
 
             function resetAll() {
-                if (!window.confirm('Hapus semua progres (nama, skor, dan status materi) lalu mulai dari awal?')) return;
+                if (!window.confirm('Hapus semua progres (nama, skor game, dan status materi) lalu mulai dari awal?')) return;
                 Store.clear();
                 state = defaultState();
                 toast('Progres dihapus. Silakan mulai dari awal.', 'info');
@@ -889,10 +787,8 @@
                         const known = hasName();
                         const steps = [
                             ['1', 'Daftar', 'Isi nama siswa untuk menyimpan progres belajarmu.'],
-                            ['2', 'Pre-Test', '5 soal untuk mengukur pengetahuan awal.'],
-                            ['3', 'Materi', '3 bab: asal-usul, tokoh & Perang Bayu, peninggalan.'],
-                            ['4', 'Mini Game', 'Kuis Kilat dengan timer, skor, dan bonus beruntun.'],
-                            ['5', 'Post-Test', '10 soal dan dashboard peningkatan hasil belajar.']
+                            ['2', 'Materi + Game', 'Baca 3 bab; di sela-sela bab ada mini game Kuis Kilat.'],
+                            ['3', 'Hasil', 'Lihat ringkasan belajar dan skor game-mu.']
                         ];
                         const facts = [
                             'Blambangan dikenal sebagai kerajaan Hindu terakhir di Pulau Jawa.',
@@ -923,10 +819,10 @@
                             '<div><p class="text-sm font-semibold uppercase tracking-widest text-gold">Belajar Sejarah Lokal</p>' +
                             '<h1 data-focus tabindex="-1" class="mt-3 font-display text-4xl font-extrabold leading-tight sm:text-5xl">Jejak Kerajaan Blambangan</h1>' +
                             '<p class="mt-4 max-w-xl text-lg text-sand/90">Telusuri kisah kerajaan Hindu terakhir di tanah Jawa: dari asal-usulnya, keberanian Pangeran Jagapati dalam Perang Bayu, hingga warisan budayanya yang masih hidup di Banyuwangi.</p>' +
-                            '<ul class="mt-6 flex flex-wrap gap-2 text-sm"><li class="rounded-full bg-white/10 px-3 py-1">Pre-Test</li><li class="rounded-full bg-white/10 px-3 py-1">Materi Interaktif</li><li class="rounded-full bg-white/10 px-3 py-1">Mini Game</li><li class="rounded-full bg-white/10 px-3 py-1">Post-Test</li></ul></div>' +
+                            '<ul class="mt-6 flex flex-wrap gap-2 text-sm"><li class="rounded-full bg-white/10 px-3 py-1">Materi Interaktif</li><li class="rounded-full bg-white/10 px-3 py-1">Mini Game</li></ul></div>' +
                             '<div class="card p-6 text-ink">' + panel + '</div></div></section>' +
                             '<section aria-labelledby="alur-title"><h2 id="alur-title" class="font-display text-2xl font-bold text-bark">Alur Belajar</h2>' +
-                            '<ol class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">' +
+                            '<ol class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">' +
                             steps.map((s) => '<li class="card p-4"><span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-clay text-sm font-bold text-white">' + s[0] + '</span>' +
                                 '<h3 class="mt-3 font-semibold text-bark">' + esc(s[1]) + '</h3><p class="mt-1 text-sm text-bark/70">' + esc(s[2]) + '</p></li>').join('') +
                             '</ol></section>' +
@@ -967,224 +863,15 @@
             }
 
             /* =====================================================================
-               7. VIEW: PRE-TEST & POST-TEST (mesin kuis yang dipakai bersama)
+               7. VIEW: MODUL MATERI
                ===================================================================== */
-            function scoreRing(percent) {
-                const r = 52;
-                const c = 2 * Math.PI * r;
-                const offset = c * (1 - percent / 100);
-                const color = percent >= 80 ? '#4f6b3a' : (percent >= 60 ? '#c8963e' : '#a63a2b');
-                return '<svg viewBox="0 0 120 120" class="h-32 w-32 -rotate-90" role="img" aria-label="Skor ' + percent + ' persen">' +
-                    '<circle cx="60" cy="60" r="' + r + '" fill="none" stroke="#efe3cc" stroke-width="12"/>' +
-                    '<circle cx="60" cy="60" r="' + r + '" fill="none" stroke="' + color + '" stroke-width="12" stroke-linecap="round" stroke-dasharray="' + c.toFixed(2) + '" stroke-dashoffset="' + offset.toFixed(2) + '"/></svg>';
-            }
-
-            function createQuizView(key) {
-                const isPre = key === 'pre';
-                const bank = isPre ? PRE_TEST : POST_TEST;
-                const meta = isPre
-                    ? { stage: 2, title: 'Pre-Test', subtitle: 'Ukur pengetahuan awalmu. Tidak apa-apa jika belum tahu; ini titik awal belajarmu.', nextId: 'materi', nextLabel: 'Lanjut ke Materi' }
-                    : { stage: 5, title: 'Post-Test', subtitle: 'Saatnya menguji apa yang sudah kamu pelajari dari materi dan game.', nextId: 'hasil', nextLabel: 'Lihat Dashboard Hasil' };
-                const ac = new AbortController();
-                let root = null;
-
-                const test = () => state.tests[key];
-                const firstOpen = () => test().answers.indexOf(null);
-
-                function header() {
-                    return '<div class="mb-6"><p class="text-sm font-semibold uppercase tracking-widest text-clay">Tahap ' + meta.stage + ' dari 5</p>' +
-                        '<h1 data-focus tabindex="-1" class="font-display text-3xl font-bold text-bark">' + meta.title + '</h1>' +
-                        '<p class="mt-1 text-bark/70">' + meta.subtitle + '</p></div>';
-                }
-
-                function render() {
-                    root.innerHTML = '<div class="mx-auto max-w-3xl">' + header() + (test().done ? summaryHtml() : questionHtml()) + '</div>';
-                }
-
-                function questionHtml() {
-                    const t = test();
-                    const i = t.index;
-                    const q = bank[i];
-                    const picked = t.answers[i];
-                    const answered = picked !== null;
-                    const open = firstOpen();
-                    const reachable = open === -1 ? bank.length - 1 : open;
-                    const answeredCount = t.answers.filter((a) => a !== null).length;
-                    const isLast = i === bank.length - 1;
-                    const ok = answered && picked === q.answer;
-
-                    const options = q.options.map((opt, idx) => {
-                        let cls = 'border-clay/20 bg-white hover:border-clay hover:bg-sand';
-                        let badge = 'bg-sand text-bark';
-                        if (answered) {
-                            if (idx === q.answer) { cls = 'border-moss bg-moss-light'; badge = 'bg-moss text-white'; }
-                            else if (idx === picked) { cls = 'border-brick bg-brick-light'; badge = 'bg-brick text-white'; }
-                            else { cls = 'border-transparent bg-white/60 opacity-70'; }
-                        }
-                        return '<button type="button" data-action="pick" data-index="' + idx + '"' + (answered ? ' disabled' : '') +
-                            ' class="flex w-full items-start gap-3 rounded-xl border-2 px-4 py-3 text-left transition ' + cls + '">' +
-                            '<span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-sm font-bold ' + badge + '">' + LETTERS[idx] + '</span>' +
-                            '<span class="pt-0.5">' + esc(opt) + '</span></button>';
-                    }).join('');
-
-                    const feedback = answered
-                        ? '<div class="mt-5 rounded-xl p-4 ' + (ok ? 'bg-moss-light text-moss' : 'bg-brick-light text-brick') + '">' +
-                        '<p class="font-semibold">' + (ok ? 'Tepat sekali!' : 'Belum tepat.') + '</p>' +
-                        (ok ? '' : '<p class="mt-1 text-sm">Jawaban benar: <strong>' + esc(q.options[q.answer]) + '</strong></p>') +
-                        '<p class="mt-1 text-sm text-ink/80">' + esc(q.explain) + '</p></div>'
-                        : '';
-
-                    const dots = bank.map((_, idx) => {
-                        const a = t.answers[idx];
-                        const current = idx === i;
-                        let cls = 'bg-white text-bark/60 border-clay/20';
-                        if (a !== null) cls = a === bank[idx].answer ? 'bg-moss text-white border-moss' : 'bg-brick text-white border-brick';
-                        if (current) cls += ' ring-2 ring-gold ring-offset-2';
-                        return '<button type="button" data-action="goto" data-index="' + idx + '"' + (idx > reachable ? ' disabled' : '') +
-                            ' aria-label="Soal ' + (idx + 1) + '"' + (current ? ' aria-current="true"' : '') +
-                            ' class="h-8 w-8 rounded-full border text-xs font-bold transition disabled:cursor-not-allowed disabled:opacity-40 ' + cls + '">' + (idx + 1) + '</button>';
-                    }).join('');
-
-                    const nextBtn = isLast
-                        ? '<button type="button" data-action="finish" data-primary' + (open === -1 ? '' : ' disabled') + ' class="btn btn-gold">Selesai &amp; Lihat Skor</button>'
-                        : '<button type="button" data-action="next" data-primary' + (answered ? '' : ' disabled') + ' class="btn btn-primary">Soal Berikutnya &rarr;</button>';
-
-                    return '<div class="card p-5 sm:p-8">' +
-                        '<div class="flex items-center justify-between text-sm font-medium text-bark/70"><span>Soal ' + (i + 1) + ' dari ' + bank.length + '</span><span>' + esc(TOPIC_LABEL[q.topic]) + '</span></div>' +
-                        '<div class="mt-2 h-2 overflow-hidden rounded-full bg-sand" role="progressbar" aria-valuemin="0" aria-valuemax="' + bank.length + '" aria-valuenow="' + answeredCount + '" aria-label="Soal terjawab">' +
-                        '<div class="h-2 rounded-full bg-clay transition-all" style="width:' + pct(answeredCount, bank.length) + '%"></div></div>' +
-                        '<h2 class="mt-6 text-xl font-semibold leading-snug text-bark">' + esc(q.q) + '</h2>' +
-                        '<div class="mt-5 space-y-3">' + options + '</div>' + feedback +
-                        '<div class="mt-8 flex items-center justify-between gap-3">' +
-                        '<button type="button" data-action="prev" class="btn btn-secondary"' + (i === 0 ? ' disabled' : '') + '>&larr; Sebelumnya</button>' + nextBtn + '</div>' +
-                        '<div class="mt-6 flex flex-wrap justify-center gap-2" aria-label="Navigasi soal">' + dots + '</div>' +
-                        '<p class="mt-4 hidden text-center text-xs text-bark/50 sm:block">Tips: tekan 1-4 untuk memilih jawaban, panah kiri/kanan untuk berpindah soal.</p></div>';
-                }
-
-                function summaryHtml() {
-                    const t = test();
-                    const total = bank.length;
-                    const percent = pct(t.score, total);
-                    const message = percent >= 80 ? 'Luar biasa! Pemahamanmu sangat baik.'
-                        : percent >= 60 ? 'Bagus! Sedikit lagi untuk menguasai semuanya.'
-                            : (isPre ? 'Tidak apa-apa, justru dari sinilah belajar dimulai. Baca materinya dengan teliti ya!' : 'Masih ada yang perlu diperdalam. Kamu bisa membaca ulang materi dari dashboard hasil.');
-                    const review = bank.map((q, i) => {
-                        const a = t.answers[i];
-                        const ok = a === q.answer;
-                        return '<details class="card p-4"><summary class="flex cursor-pointer items-start gap-3">' +
-                            '<span class="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white ' + (ok ? 'bg-moss' : 'bg-brick') + '">' + (ok ? '&#10003;' : '&#10007;') + '</span>' +
-                            '<span class="font-medium text-bark">' + (i + 1) + '. ' + esc(q.q) + '</span></summary>' +
-                            '<div class="mt-3 space-y-1 pl-9 text-sm">' +
-                            '<p>Jawabanmu: <strong>' + esc(a === null ? '-' : q.options[a]) + '</strong></p>' +
-                            (ok ? '' : '<p>Jawaban benar: <strong class="text-moss">' + esc(q.options[q.answer]) + '</strong></p>') +
-                            '<p class="text-ink/70">' + esc(q.explain) + '</p></div></details>';
-                    }).join('');
-
-                    return '<div class="card flex flex-col items-center gap-5 p-6 text-center sm:flex-row sm:text-left">' +
-                        '<div class="relative">' + scoreRing(percent) + '<span class="absolute inset-0 flex items-center justify-center text-2xl font-extrabold text-bark">' + percent + '%</span></div>' +
-                        '<div class="flex-1"><p class="text-sm font-semibold uppercase tracking-widest text-clay">Skor ' + meta.title + '</p>' +
-                        '<p class="font-display text-4xl font-extrabold text-bark">' + t.score + ' / ' + total + '</p>' +
-                        '<p class="mt-1 text-bark/80">' + esc(message) + '</p>' +
-                        '<button type="button" data-action="next-stage" class="btn btn-primary mt-4">' + meta.nextLabel + ' &rarr;</button></div></div>' +
-                        '<h2 class="mt-8 font-display text-xl font-bold text-bark">Ulasan Jawaban</h2>' +
-                        '<div class="mt-3 space-y-3">' + review + '</div>';
-                }
-
-                function scrollTop() { window.scrollTo({ top: 0, left: 0 }); }
-
-                function pick(idx) {
-                    const t = test();
-                    if (t.done) return;
-                    const i = t.index;
-                    if (t.answers[i] !== null) return;
-                    if (!Number.isInteger(idx) || idx < 0 || idx >= bank[i].options.length) return;
-                    t.answers[i] = idx;
-                    save();
-                    announce(idx === bank[i].answer ? 'Jawaban benar.' : 'Jawaban salah.');
-                    render();
-                    const primary = root.querySelector('[data-primary]:not([disabled])');
-                    if (primary) primary.focus({ preventScroll: true });
-                }
-
-                function goTo(index) {
-                    const t = test();
-                    if (t.done || !Number.isInteger(index)) return;
-                    const open = firstOpen();
-                    const reachable = open === -1 ? bank.length - 1 : open;
-                    if (index < 0 || index > reachable) return;
-                    t.index = index;
-                    save();
-                    render();
-                    scrollTop();
-                }
-
-                function next() {
-                    const t = test();
-                    if (t.index >= bank.length - 1 || t.answers[t.index] === null) return;
-                    goTo(t.index + 1);
-                }
-
-                function finish() {
-                    const t = test();
-                    if (t.done) return;
-                    if (firstOpen() !== -1) {
-                        toast('Jawab semua soal terlebih dahulu.', 'warn');
-                        return;
-                    }
-                    t.done = true;
-                    t.score = scoreOf(bank, t.answers);
-                    t.index = bank.length - 1;
-                    save();
-                    renderStepper();
-                    announce(meta.title + ' selesai. Skor ' + t.score + ' dari ' + bank.length + '.');
-                    if (pct(t.score, bank.length) >= 60) burst();
-                    render();
-                    scrollTop();
-                    const h = $('[data-focus]', root);
-                    if (h) h.focus({ preventScroll: true });
-                }
-
-                return {
-                    mount(el) {
-                        root = el;
-                        render();
-                        root.addEventListener('click', (e) => {
-                            const btn = e.target.closest('[data-action]');
-                            if (!btn || !root.contains(btn) || btn.disabled) return;
-                            switch (btn.dataset.action) {
-                                case 'pick': pick(Number(btn.dataset.index)); break;
-                                case 'goto': goTo(Number(btn.dataset.index)); break;
-                                case 'prev': goTo(test().index - 1); break;
-                                case 'next': next(); break;
-                                case 'finish': finish(); break;
-                                case 'next-stage': requestStage(meta.nextId); break;
-                                default: break;
-                            }
-                        }, { signal: ac.signal });
-                        document.addEventListener('keydown', (e) => {
-                            if (e.altKey || e.ctrlKey || e.metaKey || e.defaultPrevented) return;
-                            if (test().done) return;
-                            const tag = e.target && e.target.tagName;
-                            if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
-                            if (e.key >= '1' && e.key <= '4') pick(Number(e.key) - 1);
-                            else if (e.key === 'ArrowRight') next();
-                            else if (e.key === 'ArrowLeft') goTo(test().index - 1);
-                        }, { signal: ac.signal });
-                    },
-                    destroy() { ac.abort(); }
-                };
-            }
-
-            /* =====================================================================
-               8. VIEW: MODUL MATERI
-               ===================================================================== */
-            function createMateriView() {
+            function createMateriView(ci) {
                 const ac = new AbortController();
                 let root = null;
                 let rafId = 0;
                 let lastSaved = 0;
 
-                const chapter = () => CHAPTERS.find((c) => c.id === state.materi.current) || CHAPTERS[0];
+                const chapter = () => CHAPTERS[ci];
                 const doneCount = () => CHAPTERS.filter((c) => state.materi.done[c.id]).length;
 
                 function sidebarHtml() {
@@ -1193,7 +880,7 @@
                         const done = state.materi.done[c.id];
                         const p = state.materi.progress[c.id];
                         return '<li><button type="button" data-action="select-chapter" data-id="' + c.id + '"' + (active ? ' aria-current="true"' : '') +
-                            ' class="w-full rounded-xl border-2 p-3 text-left transition ' + (active ? 'border-clay bg-sand' : 'border-transparent bg-white hover:border-clay/40') + '">' +
+                            ' class="w-full rounded-xl border-2 p-3 text-left transition ' + (active ? 'border-clay bg-sand' : 'border-transparent bg-white hover:border-clay/40') + (canAccess('bab' + (idx + 1)) ? '' : ' opacity-60') + '">' +
                             '<div class="flex items-center gap-3"><span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold ' + (done ? 'bg-moss text-white' : 'bg-clay text-white') + '">' + (done ? '&#10003;' : (idx + 1)) + '</span>' +
                             '<div class="min-w-0"><p class="text-sm font-semibold text-bark">' + esc(c.title) + '</p><p class="text-xs text-bark/60">' + c.minutes + ' menit baca</p></div></div>' +
                             '<div class="mt-2 h-1.5 overflow-hidden rounded-full bg-sand"><div class="h-1.5 rounded-full ' + (done ? 'bg-moss' : 'bg-gold') + '" style="width:' + p + '%"></div></div></button></li>';
@@ -1222,7 +909,6 @@
                     const done = state.materi.done[c.id];
                     const prev = CHAPTERS[idx - 1];
                     const nxt = CHAPTERS[idx + 1];
-                    const allDone = materiDone();
 
                     return '<div class="min-w-0"><article id="chapter-article" class="card p-6 sm:p-10">' +
                         '<p class="text-sm font-semibold uppercase tracking-widest text-clay">Bab ' + (idx + 1) + ' dari ' + CHAPTERS.length + '</p>' +
@@ -1236,10 +922,10 @@
                         '<button id="complete-btn" type="button" data-action="complete" class="btn ' + (done ? 'btn-secondary' : 'btn-primary') + ' mt-4 w-full sm:w-auto">' + (done ? 'Bab ini sudah selesai &#10003;' : 'Tandai Bab Selesai') + '</button>' +
                         '<div class="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-clay/15 pt-4">' +
                         '<button type="button" data-action="select-chapter" data-id="' + (prev ? prev.id : '') + '" class="btn btn-secondary"' + (prev ? '' : ' disabled') + '>&larr; Bab Sebelumnya</button>' +
-                        '<button type="button" data-action="select-chapter" data-id="' + (nxt ? nxt.id : '') + '" class="btn btn-secondary"' + (nxt ? '' : ' disabled') + '>Bab Berikutnya &rarr;</button></div>' +
-                        (allDone
-                            ? '<div class="mt-5 rounded-xl bg-moss-light p-4 text-moss"><p class="font-semibold">Semua bab selesai! Mini game sudah terbuka.</p>' +
-                            '<button type="button" data-action="to-game" class="btn btn-gold mt-3">Lanjut ke Mini Game &rarr;</button></div>'
+                        '<button type="button" data-action="to-next" class="btn btn-secondary"' + (done ? '' : ' disabled') + '>' + (nxt ? 'Lanjut ke Mini Game ' + (idx + 1) : 'Lihat Hasil') + ' &rarr;</button></div>' +
+                        (done
+                            ? '<div class="mt-5 rounded-xl bg-moss-light p-4 text-moss"><p class="font-semibold">' + (nxt ? 'Bab selesai! Saatnya istirahat sejenak dengan mini game.' : 'Semua bab selesai! Dashboard hasil sudah terbuka.') + '</p>' +
+                            '<button type="button" data-action="to-next" class="btn btn-gold mt-3">' + (nxt ? 'Main Mini Game ' + (idx + 1) : 'Lihat Hasil Belajar') + ' &rarr;</button></div>'
                             : '') +
                         '</div></div>';
                 }
@@ -1292,12 +978,11 @@
                     if (!rafId) rafId = requestAnimationFrame(measure);
                 }
 
-                function selectChapter(id, scroll) {
-                    if (!CHAPTERS.some((c) => c.id === id)) return;
+                function selectChapter(id) {
+                    const n = CHAPTERS.findIndex((c) => c.id === id);
+                    if (n < 0) return;
                     save();
-                    state.materi.current = id;
-                    save();
-                    render(scroll);
+                    requestStage('bab' + (n + 1));
                 }
 
                 function complete() {
@@ -1311,11 +996,11 @@
                     state.materi.progress[c.id] = 100;
                     save();
                     renderStepper();
-                    if (materiDone()) {
-                        toast('Semua bab selesai! Mini game terbuka.', 'success');
+                    if (ci === CHAPTERS.length - 1) {
+                        toast('Semua bab selesai! Dashboard hasil terbuka.', 'success');
                         burst(24);
                     } else {
-                        toast('Bab "' + c.title + '" selesai.', 'success');
+                        toast('Bab "' + c.title + '" selesai. Mini game terbuka.', 'success');
                     }
                     render(false);
                 }
@@ -1328,9 +1013,9 @@
                             const btn = e.target.closest('[data-action]');
                             if (!btn || !root.contains(btn) || btn.disabled) return;
                             switch (btn.dataset.action) {
-                                case 'select-chapter': selectChapter(btn.dataset.id, true); break;
+                                case 'select-chapter': selectChapter(btn.dataset.id); break;
                                 case 'complete': complete(); break;
-                                case 'to-game': requestStage('game'); break;
+                                case 'to-next': requestStage(ci < CHAPTERS.length - 1 ? 'game' + (ci + 1) : 'hasil'); break;
                                 default: break;
                             }
                         }, { signal: ac.signal });
@@ -1348,18 +1033,22 @@
             }
 
             /* =====================================================================
-               9. VIEW: MINI GAME "KUIS KILAT BLAMBANGAN"
+               8. VIEW: MINI GAME "KUIS KILAT BLAMBANGAN"
                ===================================================================== */
-            function gameRank(score) {
+            function gameRank(rawScore, total) {
+                const score = rawScore * 10 / total; // skala ke 10 soal agar ambang tetap adil
                 if (score >= 2200) return { title: 'Senopati Blambangan', note: 'Pengetahuan dan kecepatanmu luar biasa!' };
                 if (score >= 1500) return { title: 'Prajurit Tangguh', note: 'Hebat! Sedikit lagi menjadi senopati.' };
                 if (score >= 800) return { title: 'Pelajar Giat', note: 'Bagus! Ulangi untuk mengejar skor lebih tinggi.' };
                 return { title: 'Calon Pejuang', note: 'Baca ulang materi, lalu coba lagi.' };
             }
 
-            function createGameView() {
+            function createGameView(round) {
                 const ac = new AbortController();
-                const { total: TOTAL, timeMs: TIME_MS, feedbackMs: FEEDBACK_MS } = GAME_CONFIG;
+                const { timeMs: TIME_MS, feedbackMs: FEEDBACK_MS } = GAME_CONFIG;
+                const POOL = GAME_ROUNDS[round].pool;
+                const TOTAL = POOL.length;
+                const G = () => state.game.rounds[round];
                 let root = null;
                 let phase = 'intro'; // intro | question | feedback | result
                 let deck = [];
@@ -1383,8 +1072,8 @@
                 function settleScore() { stopTween(); shownScore = score; }
 
                 function introHtml() {
-                    const best = state.game.best;
-                    return '<div class="mx-auto max-w-2xl"><div class="mb-6"><p class="text-sm font-semibold uppercase tracking-widest text-clay">Tahap 4 dari 5</p>' +
+                    const best = G().best;
+                    return '<div class="mx-auto max-w-2xl"><div class="mb-6"><p class="text-sm font-semibold uppercase tracking-widest text-clay">Mini Game ' + (round + 1) + ' dari ' + GAME_ROUNDS.length + ' &middot; setelah Bab ' + (round + 1) + '</p>' +
                         '<h1 data-focus tabindex="-1" class="font-display text-3xl font-bold text-bark">Kuis Kilat Blambangan</h1>' +
                         '<p class="mt-1 text-bark/70">Jawab cepat dan tepat untuk mengumpulkan skor setinggi-tingginya.</p></div>' +
                         '<div class="card p-6 sm:p-8"><h2 class="font-semibold text-bark">Aturan Main</h2>' +
@@ -1395,7 +1084,7 @@
                         '<li class="flex gap-3"><span class="font-bold text-clay">4.</span><span>Jawaban salah atau waktu habis memutus rangkaian beruntunmu.</span></li></ul>' +
                         '<div class="mt-5 rounded-xl bg-sand p-4 text-center"><p class="text-sm text-bark/70">Skor terbaikmu</p><p class="font-display text-3xl font-extrabold text-bark">' + best + '</p></div>' +
                         '<div class="mt-6 flex flex-wrap gap-3"><button type="button" data-action="start" data-focus-start class="btn btn-primary">Mulai Bermain</button>' +
-                        (state.game.plays > 0 ? '<button type="button" data-action="to-post" class="btn btn-secondary">Lanjut ke Post-Test</button>' : '') + '</div></div></div>';
+                        (G().plays > 0 ? '<button type="button" data-action="to-next" class="btn btn-secondary">Lanjut ke Bab ' + (round + 2) + '</button>' : '') + '</div></div></div>';
                 }
 
                 function questionHtml() {
@@ -1444,7 +1133,7 @@
                 }
 
                 function resultHtml() {
-                    const rank = gameRank(score);
+                    const rank = gameRank(score, TOTAL);
                     const accuracy = pct(correctCount, TOTAL);
                     return '<div class="mx-auto max-w-2xl"><div class="card p-6 text-center sm:p-10">' +
                         '<p class="text-sm font-semibold uppercase tracking-widest text-clay">Permainan Selesai</p>' +
@@ -1455,9 +1144,9 @@
                         '<div class="rounded-xl bg-sand p-3"><dt class="text-xs text-bark/60">Benar</dt><dd class="text-lg font-bold text-bark">' + correctCount + '/' + TOTAL + '</dd></div>' +
                         '<div class="rounded-xl bg-sand p-3"><dt class="text-xs text-bark/60">Akurasi</dt><dd class="text-lg font-bold text-bark">' + accuracy + '%</dd></div>' +
                         '<div class="rounded-xl bg-sand p-3"><dt class="text-xs text-bark/60">Beruntun terbaik</dt><dd class="text-lg font-bold text-bark">x' + bestStreak + '</dd></div></dl>' +
-                        '<p class="mt-4 text-sm text-bark/70">Skor terbaik: <strong>' + state.game.best + '</strong></p>' +
+                        '<p class="mt-4 text-sm text-bark/70">Skor terbaik: <strong>' + G().best + '</strong></p>' +
                         '<div class="mt-6 flex flex-wrap justify-center gap-3"><button type="button" data-action="start" class="btn btn-secondary">Main Lagi</button>' +
-                        '<button type="button" data-action="to-post" class="btn btn-primary">Lanjut ke Post-Test &rarr;</button></div></div></div>';
+                        '<button type="button" data-action="to-next" class="btn btn-primary">Lanjut ke Bab ' + (round + 2) + ' &rarr;</button></div></div></div>';
                 }
 
                 function render() {
@@ -1509,7 +1198,7 @@
 
                 function startGame() {
                     stopTimer(); stopAdvance(); stopTween();
-                    deck = shuffle(GAME_POOL).slice(0, TOTAL).map((q) => ({
+                    deck = shuffle(POOL).map((q) => ({
                         q: q.q,
                         explain: q.explain,
                         opts: shuffle(q.options.map((text, i) => ({ text, correct: i === q.answer })))
@@ -1567,10 +1256,10 @@
                     phase = 'result';
                     stopTimer(); stopAdvance();
                     settleScore();
-                    newBest = score > state.game.best;
-                    state.game.plays += 1;
-                    state.game.last = score;
-                    if (newBest) state.game.best = score;
+                    newBest = score > G().best;
+                    G().plays += 1;
+                    G().last = score;
+                    if (newBest) G().best = score;
                     save();
                     renderStepper();
                     render();
@@ -1593,7 +1282,7 @@
                                 case 'start': startGame(); break;
                                 case 'answer': if (phase === 'question') resolveAnswer(Number(btn.dataset.index)); break;
                                 case 'advance': advance(); break;
-                                case 'to-post': requestStage('post'); break;
+                                case 'to-next': requestStage('bab' + (round + 2)); break;
                                 default: break;
                             }
                         }, { signal: ac.signal });
@@ -1612,109 +1301,58 @@
             /* =====================================================================
                10. VIEW: DASHBOARD HASIL
                ===================================================================== */
-            function topicStats(bank, answers) {
-                const out = {};
-                Object.keys(TOPIC_LABEL).forEach((k) => { out[k] = { correct: 0, total: 0 }; });
-                bank.forEach((q, i) => {
-                    out[q.topic].total += 1;
-                    if (answers[i] === q.answer) out[q.topic].correct += 1;
-                });
-                return out;
-            }
-
             function createResultView() {
                 const ac = new AbortController();
                 return {
                     mount(root) {
-                        const pre = state.tests.pre;
-                        const post = state.tests.post;
-                        const prePct = pct(pre.score, PRE_TEST.length);
-                        const postPct = pct(post.score, POST_TEST.length);
-                        const delta = postPct - prePct;
-                        const preTopics = topicStats(PRE_TEST, pre.answers);
-                        const postTopics = topicStats(POST_TEST, post.answers);
-
-                        let headline;
-                        let note;
-                        if (postPct === 100 && delta >= 0) { headline = 'Sempurna!'; note = 'Kamu menjawab semua soal Post-Test dengan benar. Pemahamanmu tentang Blambangan sangat kuat.'; }
-                        else if (delta >= 30) { headline = 'Peningkatan luar biasa!'; note = 'Pemahamanmu melonjak jauh dibanding Pre-Test. Belajarmu terbukti efektif.'; }
-                        else if (delta > 0) { headline = 'Pemahamanmu meningkat'; note = 'Skor Post-Test lebih tinggi daripada Pre-Test. Pertahankan semangat belajarmu.'; }
-                        else if (delta === 0) { headline = 'Skormu bertahan'; note = 'Persentase skormu sama dengan Pre-Test. Coba baca ulang materi untuk memperdalam pemahaman.'; }
-                        else { headline = 'Ayo pelajari lagi'; note = 'Skor Post-Test lebih rendah dari Pre-Test. Baca ulang materi dengan teliti, lalu diskusikan bagian yang sulit dengan gurumu.'; }
-
-                        const deltaBadge = delta > 0
-                            ? '<span class="rounded-full bg-moss px-3 py-1 text-sm font-bold text-white">&#9650; +' + delta + ' poin persentase</span>'
-                            : (delta === 0
-                                ? '<span class="rounded-full bg-gold px-3 py-1 text-sm font-bold text-ink">&#9644; Tidak berubah</span>'
-                                : '<span class="rounded-full bg-brick px-3 py-1 text-sm font-bold text-white">&#9660; ' + delta + ' poin persentase</span>');
-
-                        const bar = (label, value, raw, color) =>
-                            '<div><div class="flex items-baseline justify-between text-sm"><span class="font-semibold text-bark">' + label + '</span><span class="text-bark/70">' + raw + ' &middot; <strong class="text-bark">' + value + '%</strong></span></div>' +
-                            '<div class="mt-1 h-5 overflow-hidden rounded-full bg-sand"><div class="bar-fill h-5 rounded-full ' + color + '" style="width:0%" data-w="' + value + '"></div></div></div>';
-
-                        const topicRows = Object.keys(TOPIC_LABEL).map((k) => {
-                            const a = preTopics[k];
-                            const b = postTopics[k];
-                            return '<div class="rounded-xl bg-sand/70 p-4"><p class="font-semibold text-bark">' + esc(TOPIC_LABEL[k]) + '</p><div class="mt-3 space-y-3">' +
-                                bar('Pre-Test', pct(a.correct, a.total), a.correct + '/' + a.total, 'bg-gold') +
-                                bar('Post-Test', pct(b.correct, b.total), b.correct + '/' + b.total, 'bg-moss') + '</div></div>';
-                        }).join('');
+                        const rounds = state.game.rounds;
+                        const totalBest = rounds.reduce((sum, r) => sum + r.best, 0);
+                        const totalPlays = rounds.reduce((sum, r) => sum + r.plays, 0);
+                        const rank = gameRank(totalBest / rounds.length, GAME_ROUNDS[0].pool.length);
+                        const stat = (label, value) => '<div class="rounded-xl bg-sand p-4"><dt class="text-sm text-bark/60">' + label + '</dt><dd class="text-2xl font-extrabold text-bark">' + value + '</dd></div>';
 
                         root.innerHTML =
                             '<div class="mx-auto max-w-4xl space-y-6">' +
                             '<div class="card overflow-hidden"><div class="bg-gradient-to-r from-bark to-clay p-6 text-sand sm:p-8">' +
                             '<p class="text-sm font-semibold uppercase tracking-widest text-gold">Dashboard Hasil Belajar</p>' +
-                            '<h1 data-focus tabindex="-1" class="mt-1 font-display text-3xl font-bold sm:text-4xl">' + esc(headline) + '</h1>' +
+                            '<h1 data-focus tabindex="-1" class="mt-1 font-display text-3xl font-bold sm:text-4xl">Selamat, materi tuntas!</h1>' +
                             '<p class="mt-2 break-words text-sand/90">Siswa: <strong>' + esc(state.name) + '</strong></p></div>' +
-                            '<div class="p-6 sm:p-8"><p class="text-bark/80">' + esc(note) + '</p>' +
-                            '<div class="mt-5 flex flex-wrap items-center gap-3">' + deltaBadge + '</div>' +
-                            '<div class="mt-6 space-y-4">' +
-                            bar('Pre-Test', prePct, pre.score + '/' + PRE_TEST.length + ' benar', 'bg-gold') +
-                            bar('Post-Test', postPct, post.score + '/' + POST_TEST.length + ' benar', 'bg-moss') + '</div>' +
-                            '<p class="mt-3 text-xs text-bark/60">Perbandingan memakai persentase karena jumlah soal Pre-Test (' + PRE_TEST.length + ') dan Post-Test (' + POST_TEST.length + ') berbeda.</p></div></div>' +
-                            '<section class="card p-6 sm:p-8"><h2 class="font-display text-2xl font-bold text-bark">Perbandingan per Topik</h2>' +
-                            '<div class="mt-4 grid gap-4 md:grid-cols-3">' + topicRows + '</div></section>' +
+                            '<div class="p-6 sm:p-8"><p class="text-bark/80">Kamu telah menyelesaikan seluruh bab tentang Kerajaan Blambangan dan memainkan mini game di sela-sela materi.</p>' +
+                            '<p class="mt-4 font-display text-2xl font-bold text-bark">' + esc(rank.title) + '</p><p class="text-bark/70">' + esc(rank.note) + '</p></div></div>' +
                             '<section class="card p-6 sm:p-8"><h2 class="font-display text-2xl font-bold text-bark">Ringkasan Aktivitas</h2>' +
                             '<dl class="mt-4 grid gap-3 sm:grid-cols-3">' +
-                            '<div class="rounded-xl bg-sand p-4"><dt class="text-sm text-bark/60">Bab materi selesai</dt><dd class="text-2xl font-extrabold text-bark">' + CHAPTERS.filter((c) => state.materi.done[c.id]).length + ' / ' + CHAPTERS.length + '</dd></div>' +
-                            '<div class="rounded-xl bg-sand p-4"><dt class="text-sm text-bark/60">Skor terbaik game</dt><dd class="text-2xl font-extrabold text-bark">' + state.game.best + '</dd></div>' +
-                            '<div class="rounded-xl bg-sand p-4"><dt class="text-sm text-bark/60">Game dimainkan</dt><dd class="text-2xl font-extrabold text-bark">' + state.game.plays + 'x</dd></div></dl></section>' +
+                            stat('Bab materi selesai', CHAPTERS.filter((c) => state.materi.done[c.id]).length + ' / ' + CHAPTERS.length) +
+                            stat('Skor terbaik Game 1', rounds[0].best) +
+                            stat('Skor terbaik Game 2', rounds[1].best) +
+                            stat('Total skor terbaik', totalBest) +
+                            stat('Game dimainkan', totalPlays + 'x') + '</dl></section>' +
                             '<div class="no-print flex flex-wrap gap-3"><button type="button" data-action="print" class="btn btn-primary">Cetak / Simpan PDF</button>' +
                             '<button type="button" data-action="review" class="btn btn-secondary">Pelajari Materi Lagi</button>' +
                             '<button type="button" data-action="restart" class="btn btn-secondary">Mulai Ulang Semua</button></div></div>';
-
-                        /* Memicu animasi bar setelah elemen masuk ke DOM. */
-                        root.querySelectorAll('[data-w]').forEach((el) => {
-                            void el.offsetWidth;
-                            el.style.width = el.dataset.w + '%';
-                        });
 
                         root.addEventListener('click', (e) => {
                             const btn = e.target.closest('[data-action]');
                             if (!btn || !root.contains(btn)) return;
                             if (btn.dataset.action === 'print') window.print();
-                            if (btn.dataset.action === 'review') go('materi');
+                            if (btn.dataset.action === 'review') go('bab1');
                             if (btn.dataset.action === 'restart') resetAll();
                         }, { signal: ac.signal });
 
-                        if (delta > 0 || postPct === 100) burst(36);
-                        announce('Dashboard hasil dimuat. Pre-Test ' + prePct + ' persen, Post-Test ' + postPct + ' persen.');
+                        burst(36);
+                        announce('Dashboard hasil dimuat. Total skor game ' + totalBest + '.');
                     },
                     destroy() { ac.abort(); }
                 };
             }
 
             /* =====================================================================
-               11. ROUTER
+               9. ROUTER
                ===================================================================== */
-            const VIEWS = {
-                daftar: createLandingView,
-                pre: () => createQuizView('pre'),
-                materi: createMateriView,
-                game: createGameView,
-                post: () => createQuizView('post'),
-                hasil: createResultView
-            };
+            const VIEWS = { daftar: createLandingView, hasil: createResultView };
+            STAGES.forEach((st) => {
+                if (st.kind === 'bab') VIEWS[st.id] = () => createMateriView(st.idx);
+                if (st.kind === 'game') VIEWS[st.id] = () => createGameView(st.idx);
+            });
 
             let currentView = null;
 
@@ -1743,7 +1381,7 @@
             }
 
             function handleRoute() {
-                const match = location.hash.match(/^#\/([a-z]+)\/?$/);
+                const match = location.hash.match(/^#\/([a-z0-9]+)\/?$/);
                 const id = match ? match[1] : (location.hash === '' || location.hash === '#' ? 'daftar' : null);
                 if (id === null || !VIEWS[id]) { replaceHash('daftar'); return; }
                 if (!canAccess(id)) {
@@ -1755,7 +1393,7 @@
             }
 
             /* =====================================================================
-               12. INISIALISASI
+               11. INISIALISASI
                ===================================================================== */
             function init() {
                 $('#btn-reset').addEventListener('click', resetAll);
