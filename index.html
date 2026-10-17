@@ -293,6 +293,69 @@
                 box-shadow: none;
             }
         }
+        /* ===== Mini game ===== */
+        .game-stage {
+            position: relative; overflow: hidden; border-radius: 1.5rem; padding: 1.25rem; color: #efe3cc;
+            background-color: #3b2a1e;
+            background-image: radial-gradient(120% 90% at 50% 0%, rgba(200,150,62,.28), transparent 60%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cg fill='none' stroke='%23c8963e' stroke-opacity='.16' stroke-width='1.5'%3E%3Ccircle cx='24' cy='0' r='12'/%3E%3Ccircle cx='24' cy='48' r='12'/%3E%3Ccircle cx='0' cy='24' r='12'/%3E%3Ccircle cx='48' cy='24' r='12'/%3E%3Ccircle cx='24' cy='24' r='3'/%3E%3C/g%3E%3C/svg%3E");
+            box-shadow: 0 20px 40px -18px rgba(59,42,30,.7), inset 0 0 0 2px rgba(200,150,62,.55), inset 0 0 0 6px rgba(59,42,30,.9), inset 0 0 0 7px rgba(200,150,62,.25);
+        }
+        @media (min-width: 640px) { .game-stage { padding: 2rem; } }
+        .game-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 800; color: #e8c98a; letter-spacing: .01em; }
+        .game-sub { color: rgba(239,227,204,.8); }
+        .hud { display: flex; gap: .6rem; flex-wrap: wrap; justify-content: center; margin-bottom: 1rem; }
+        .hud-pill { min-width: 6.2rem; text-align: center; padding: .45rem .9rem; border-radius: 999px; background: rgba(0,0,0,.32); border: 1px solid rgba(232,201,138,.4); }
+        .hud-pill small { display: block; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: #e8c98a; }
+        .hud-pill b { font-size: 1.15rem; font-variant-numeric: tabular-nums; color: #fff; }
+        .game-btn { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; padding: .7rem 1.4rem; border-radius: 999px; font-weight: 700; transition: transform .15s, box-shadow .15s, filter .15s; cursor: pointer; }
+        .game-btn:active { transform: scale(.97); }
+        .game-btn.gold { background: linear-gradient(180deg, #e8c98a, #c8963e); color: #3b2a1e; box-shadow: 0 6px 0 #8a6420, 0 10px 18px rgba(0,0,0,.3); }
+        .game-btn.gold:hover { filter: brightness(1.06); transform: translateY(-1px); }
+        .game-btn.ghost { background: rgba(255,255,255,.08); color: #efe3cc; border: 1px solid rgba(232,201,138,.5); }
+        .game-btn.ghost:hover { background: rgba(255,255,255,.16); }
+        .game-panel { background: rgba(0,0,0,.28); border: 1px solid rgba(232,201,138,.3); border-radius: 1rem; padding: 1rem 1.25rem; }
+
+        /* puzzle */
+        .pz-board { position: relative; width: 100%; max-width: 26rem; margin: 0 auto; aspect-ratio: 1; padding: 10px; border-radius: 1.1rem;
+            background: linear-gradient(145deg, #e8c98a, #a4732a); box-shadow: 0 18px 30px -12px rgba(0,0,0,.6), inset 0 2px 0 rgba(255,255,255,.4); }
+        .pz-field { position: relative; width: 100%; height: 100%; border-radius: .6rem; background: #24170f; box-shadow: inset 0 4px 14px rgba(0,0,0,.7); overflow: hidden; }
+        .pz-tile { position: absolute; width: 33.3334%; height: 33.3334%; padding: 3px; transition: left .2s ease, top .2s ease; border: 0; background: none; cursor: pointer; }
+        .pz-tile > span.pz-img { display: block; width: 100%; height: 100%; border-radius: .5rem; background-repeat: no-repeat; box-shadow: 0 3px 8px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,.35); transition: border-radius .4s, box-shadow .4s; }
+        .pz-tile:hover > span.pz-img { filter: brightness(1.1); }
+        .pz-tile .pz-no { position: absolute; left: 9px; top: 9px; width: 1.35rem; height: 1.35rem; border-radius: 999px; background: rgba(59,42,30,.82); color: #e8c98a; font-size: .72rem; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+        .pz-board.won .pz-tile { padding: 0; cursor: default; }
+        .pz-board.won .pz-tile > span.pz-img { border-radius: 0; box-shadow: none; }
+        .pz-board.won .pz-no { display: none; }
+        .pz-board.won::after { content: ''; position: absolute; inset: 10px; border-radius: .6rem; pointer-events: none;
+            background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,.55) 50%, transparent 65%); background-size: 250% 100%; animation: shine 1.2s ease-out 1; }
+        @keyframes shine { from { background-position: 120% 0; } to { background-position: -120% 0; } }
+
+        /* kartu pasangan */
+        .mem-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; }
+        @media (min-width: 640px) { .mem-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; } }
+        .mem-card { position: relative; perspective: 900px; aspect-ratio: 4 / 5; border: 0; background: none; padding: 0; cursor: pointer; }
+        .mem-inner { position: absolute; inset: 0; transition: transform .55s cubic-bezier(.3,.7,.2,1); transform-style: preserve-3d; }
+        .mem-card.up .mem-inner { transform: rotateY(180deg); }
+        .mem-card:not(.up):hover .mem-inner { transform: translateY(-3px) rotateZ(-1deg); }
+        .mem-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: .9rem; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: .5rem; text-align: center; overflow: hidden; }
+        .mem-front { background-color: #a4532b;
+            background-image: radial-gradient(circle at 50% 35%, rgba(232,201,138,.35), transparent 65%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cg fill='none' stroke='%23e8c98a' stroke-opacity='.35' stroke-width='1'%3E%3Ccircle cx='16' cy='0' r='8'/%3E%3Ccircle cx='16' cy='32' r='8'/%3E%3Ccircle cx='0' cy='16' r='8'/%3E%3Ccircle cx='32' cy='16' r='8'/%3E%3C/g%3E%3C/svg%3E");
+            border: 2px solid #e8c98a; box-shadow: 0 6px 12px rgba(0,0,0,.4), inset 0 0 0 3px rgba(59,42,30,.55); }
+        .mem-back { transform: rotateY(180deg); background: linear-gradient(180deg, #fbf3e2, #efe3cc); border: 2px solid #c8963e; color: #3b2a1e; box-shadow: 0 6px 12px rgba(0,0,0,.35); font-size: .78rem; line-height: 1.25; font-weight: 600; }
+        @media (min-width: 640px) { .mem-back { font-size: .9rem; } }
+        .mem-back .tag { font-size: .58rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 800; margin-bottom: .3rem; color: #a4532b; }
+        .mem-back.term { background: linear-gradient(180deg, #f7e2b3, #e8c98a); }
+        .mem-back.term .txt { font-family: 'Playfair Display', Georgia, serif; font-weight: 800; font-size: 1rem; }
+        .mem-card.ok .mem-back { background: linear-gradient(180deg, #e3efd6, #bcd3a2); border-color: #4f6b3a; animation: pop .45s ease; }
+        .mem-card.ok { cursor: default; }
+        .mem-card.bad .mem-back { border-color: #a63a2b; animation: shake .4s; }
+        @keyframes pop { 0% { transform: rotateY(180deg) scale(1); } 50% { transform: rotateY(180deg) scale(1.08); } 100% { transform: rotateY(180deg) scale(1); } }
+        @keyframes shake { 25% { transform: rotateY(180deg) translateX(-4px); } 75% { transform: rotateY(180deg) translateX(4px); } }
+        .win-banner { animation: rise .5s ease-out; }
+        @keyframes rise { from { opacity: 0; transform: translateY(12px) scale(.96); } to { opacity: 1; transform: none; } }
+        @media (prefers-reduced-motion: reduce) { .pz-tile, .mem-inner, .pz-board.won::after, .mem-card.ok .mem-back, .mem-card.bad .mem-back, .win-banner { transition: none; animation: none; } }
     </style>
 </head>
 
@@ -476,65 +539,13 @@
                 }
             ];
 
-            const GAME_POOL = [
-                {
-                    q: 'Kapan Perang Bayu berlangsung?', options: ['Sekitar 1571-1572', 'Sekitar 1671-1672', 'Sekitar 1771-1772', 'Sekitar 1871-1872'], answer: 2,
-                    explain: 'Perang Bayu terjadi sekitar 1771-1772.'
-                },
-                {
-                    q: 'Siapa nama asli Pangeran Jagapati?', options: ['Mas Rempeg', 'Raden Wijaya', 'Tawang Alun', 'Bhre Wirabumi'], answer: 0,
-                    explain: 'Pangeran Jagapati bernama asli Mas Rempeg.'
-                },
-                {
-                    q: 'Kerajaan besar yang melemah sehingga Blambangan bertahan sebagai kerajaan Hindu terakhir di Jawa adalah...', options: ['Sriwijaya', 'Demak', 'Majapahit', 'Pajajaran'], answer: 2,
-                    explain: 'Setelah Majapahit melemah, Blambangan tetap mempertahankan tradisi Hindu-Buddha.'
-                },
-                {
-                    q: 'Kabupaten modern yang mencakup bekas pusat Blambangan adalah...', options: ['Banyuwangi', 'Kediri', 'Tegal', 'Magelang'], answer: 0,
-                    explain: 'Blambangan berada di ujung timur Jawa, kini Banyuwangi dan sekitarnya.'
-                },
-                {
-                    q: 'Penari Gandrung diiringi gamelan dan alat musik gesek bernama...', options: ['Sasando', 'Kecapi', 'Sitar', 'Biola'], answer: 3,
-                    explain: 'Iringan Gandrung memadukan gamelan dengan biola.'
-                },
-                {
-                    q: 'Suku asli Banyuwangi yang dianggap keturunan masyarakat Blambangan adalah...', options: ['Osing', 'Betawi', 'Dayak', 'Minang'], answer: 0,
-                    explain: 'Suku Osing (Using) dianggap keturunan masyarakat Blambangan.'
-                },
-                {
-                    q: 'Prabu Tawang Alun memerintah dari pusat kerajaan di...', options: ['Trowulan', 'Kotagede', 'Macanputih', 'Demak'], answer: 2,
-                    explain: 'Pusat pemerintahan Tawang Alun berada di Macanputih.'
-                },
-                {
-                    q: 'Pihak yang akhirnya menguasai Blambangan setelah perlawanan rakyat adalah...', options: ['Majapahit', 'VOC', 'Sriwijaya', 'Demak'], answer: 1,
-                    explain: 'VOC menegaskan kekuasaannya atas Blambangan setelah perlawanan rakyat dipadamkan.'
-                },
-                {
-                    q: 'Perang Paregreg terjadi pada sekitar tahun...', options: ['1204-1206', '1304-1306', '1404-1406', '1604-1606'], answer: 2,
-                    explain: 'Perang Paregreg berlangsung sekitar 1404-1406.'
-                },
-                {
-                    q: 'Penguasa Blambangan yang berhadapan dengan Wikramawardhana dalam Perang Paregreg adalah...', options: ['Hayam Wuruk', 'Airlangga', 'Jayanegara', 'Bhre Wirabumi'], answer: 3,
-                    explain: 'Bhre Wirabumi memimpin wilayah timur yang berpusat di Blambangan.'
-                },
-                {
-                    q: 'Hari Jadi Banyuwangi diperingati setiap tanggal...', options: ['17 Agustus', '18 Desember', '10 November', '28 Oktober'], answer: 1,
-                    explain: 'Tanggal 18 Desember mengacu pada puncak Puputan Bayu tahun 1771.'
-                },
-                {
-                    q: 'Ritual bersih desa di Banyuwangi dengan penari trance bernama...', options: ['Seblang', 'Reog', 'Kecak', 'Saman'], answer: 0,
-                    explain: 'Seblang diselenggarakan di Desa Olehsari dan Bakungan.'
-                }
+/* Game disisipkan di sela-sela bab: Bab 1 -> Game 1 -> Bab 2 -> Game 2 -> Bab 3.
+               Satu game di tiap sela; menyelesaikannya membuka bab berikutnya. */
+const GAME_ROUNDS = [
+                { id: 'game1', game: 'puzzle' },
+                { id: 'game2', game: 'memory' }
             ];
 
-            /* Game disisipkan di sela-sela bab: Bab 1 -> Game 1 -> Bab 2 -> Game 2 -> Bab 3.
-               Soal dibagi dua (indeks genap untuk Game 1, ganjil untuk Game 2) agar tidak berulang. */
-            const GAME_CONFIG = { timeMs: 15000, feedbackMs: 2400 };
-            const GAME_ROUNDS = [
-                { id: 'game1', pool: GAME_POOL.filter((_, i) => i % 2 === 0) },
-                { id: 'game2', pool: GAME_POOL.filter((_, i) => i % 2 === 1) }
-            ];
-            const LETTERS = ['A', 'B', 'C', 'D'];
 
             /* =====================================================================
                2. UTILITAS
@@ -787,7 +798,7 @@
                         const known = hasName();
                         const steps = [
                             ['1', 'Daftar', 'Isi nama siswa untuk menyimpan progres belajarmu.'],
-                            ['2', 'Materi + Game', 'Baca 3 bab; di sela-sela bab ada mini game Kuis Kilat.'],
+                            ['2', 'Materi + Game', 'Baca 3 bab; di sela-sela bab ada puzzle dan kartu pasangan bertema Blambangan.'],
                             ['3', 'Hasil', 'Lihat ringkasan belajar dan skor game-mu.']
                         ];
                         const facts = [
@@ -1033,238 +1044,313 @@
             }
 
             /* =====================================================================
-               8. VIEW: MINI GAME "KUIS KILAT BLAMBANGAN"
+               8. VIEW: MINI GAME (satu game di tiap sela bab, bertema Blambangan)
+               Sela 1 (setelah Bab 1): Puzzle Gapura. Sela 2 (setelah Bab 2): Kartu Pasangan.
+               Skor tiap game 0-1000.
                ===================================================================== */
-            function gameRank(rawScore, total) {
-                const score = rawScore * 10 / total; // skala ke 10 soal agar ambang tetap adil
-                if (score >= 2200) return { title: 'Senopati Blambangan', note: 'Pengetahuan dan kecepatanmu luar biasa!' };
-                if (score >= 1500) return { title: 'Prajurit Tangguh', note: 'Hebat! Sedikit lagi menjadi senopati.' };
-                if (score >= 800) return { title: 'Pelajar Giat', note: 'Bagus! Ulangi untuk mengejar skor lebih tinggi.' };
-                return { title: 'Calon Pejuang', note: 'Baca ulang materi, lalu coba lagi.' };
+            const GAME_META = {
+                puzzle: {
+                    icon: '\u{1F9E9}', title: 'Puzzle Gapura Blambangan',
+                    desc: 'Susun kembali gambar gapura candi bentar, gerbang khas peninggalan kerajaan Hindu di ujung timur Jawa.',
+                    rules: ['Ketuk kepingan di sebelah ruang kosong untuk menggesernya.', 'Susun kepingan 1-9 sampai gambar utuh.', 'Makin sedikit langkah dan makin cepat, makin tinggi skormu.']
+                },
+                memory: {
+                    icon: '\u{1F0CF}', title: 'Kartu Pasangan Pejuang',
+                    desc: 'Cocokkan tokoh dan istilah dari perjuangan rakyat Blambangan dengan keterangannya.',
+                    rules: ['Ketuk dua kartu untuk membaliknya.', 'Cocokkan kartu tokoh atau istilah (emas) dengan keterangannya (krem).', 'Makin sedikit percobaan, makin tinggi skormu.']
+                }
+            };
+
+            function gameRank(score) {
+                if (score >= 800) return { title: 'Senopati Blambangan', note: 'Cepat, cermat, dan penuh strategi. Luar biasa!' };
+                if (score >= 600) return { title: 'Prajurit Tangguh', note: 'Hebat! Sedikit lagi menjadi senopati.' };
+                if (score >= 400) return { title: 'Pelajar Giat', note: 'Bagus! Main lagi untuk mengejar skor lebih tinggi.' };
+                return { title: 'Calon Pejuang', note: 'Tidak apa-apa, coba lagi dan baca ulang materinya.' };
             }
+
+            const fmtTime = (sec) => Math.floor(sec / 60) + ':' + String(sec % 60).padStart(2, '0');
+            const hudPill = (label, id, value) => '<div class="hud-pill"><small>' + label + '</small><b id="' + id + '">' + value + '</b></div>';
+
+            /* Ilustrasi gapura (candi bentar) Blambangan, dipakai sebagai gambar puzzle. */
+            function sceneSvg() {
+                const left = '92,300 92,215 100,215 100,200 108,200 108,185 116,185 116,172 124,172 124,162 135,162 135,300';
+                const right = '208,300 208,215 200,215 200,200 192,200 192,185 184,185 184,172 176,172 176,162 165,162 165,300';
+                const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">' +
+                    '<defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8c98a"/><stop offset=".6" stop-color="#f6e6c3"/><stop offset="1" stop-color="#efe3cc"/></linearGradient>' +
+                    '<linearGradient id="se" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3f7d8c"/><stop offset="1" stop-color="#23495a"/></linearGradient></defs>' +
+                    '<rect width="300" height="300" fill="url(#sk)"/>' +
+                    '<circle cx="232" cy="82" r="36" fill="#c8963e" opacity=".92"/><circle cx="232" cy="82" r="48" fill="#c8963e" opacity=".18"/>' +
+                    '<path d="M0 182 L55 112 L92 152 L142 92 L196 160 L238 124 L300 182Z" fill="#8a9a6a"/>' +
+                    '<path d="M0 196 L72 140 L122 184 L178 136 L240 188 L300 160 L300 210 L0 210Z" fill="#4f6b3a"/>' +
+                    '<rect y="196" width="300" height="50" fill="url(#se)"/>' +
+                    '<g stroke="#fff" stroke-opacity=".45" stroke-width="1.5" fill="none"><path d="M10 206 q8 -5 16 0 t16 0"/><path d="M200 214 q8 -5 16 0 t16 0"/><path d="M250 202 q8 -5 16 0 t16 0"/><path d="M30 228 q8 -5 16 0 t16 0"/></g>' +
+                    '<path d="M38 224 L74 224 L68 234 L44 234Z" fill="#3b2a1e"/><path d="M56 222 L56 190 L82 220Z" fill="#a4532b"/><path d="M54 222 L54 196 L38 220Z" fill="#e8c98a"/><rect x="55" y="186" width="2" height="38" fill="#3b2a1e"/>' +
+                    '<rect y="240" width="300" height="60" fill="#5a3a25"/>' +
+                    '<polygon points="' + left + '" fill="#a4532b" stroke="#3b2a1e" stroke-width="2"/><polygon points="' + right + '" fill="#a4532b" stroke="#3b2a1e" stroke-width="2"/>' +
+                    '<g stroke="#843f1f" stroke-width="2"><path d="M100 230H128M100 250H128M100 270H128"/><path d="M200 230H172M200 250H172M200 270H172"/></g>' +
+                    '<polygon points="118,300 128,276 172,276 182,300" fill="#c8963e" stroke="#3b2a1e" stroke-width="2"/><polygon points="128,276 136,262 164,262 172,276" fill="#e8c98a" stroke="#3b2a1e" stroke-width="2"/>' +
+                    '<g stroke="#3b2a1e" stroke-width="4" fill="none" stroke-linecap="round"><path d="M34 300 Q40 262 28 232"/><path d="M268 300 Q262 266 274 238"/></g>' +
+                    '<g fill="#4f6b3a"><path d="M28 232 q-22 -6 -26 10 q14 -8 26 -10z"/><path d="M28 232 q20 -14 36 -2 q-18 -2 -36 2z"/><path d="M28 232 q-6 -20 10 -26 q-6 14 -10 26z"/><path d="M274 238 q22 -6 26 10 q-14 -8 -26 -10z"/><path d="M274 238 q-20 -14 -36 -2 q18 -2 36 2z"/><path d="M274 238 q6 -20 -10 -26 q6 14 10 26z"/></g>' +
+                    '<text x="150" y="34" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="700" letter-spacing="5" fill="#3b2a1e">BLAMBANGAN</text>' +
+                    '<path d="M70 44 H230" stroke="#a4532b" stroke-width="2"/>' +
+                    '</svg>';
+                return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+            }
+
+            /* ---------- Game 1: Puzzle geser 3x3 (DOM dibuat lewat JS agar gambar selalu tampil) ---------- */
+            function createPuzzleGame(host, done) {
+                const N = 3;
+                const BLANK = N * N - 1;
+                const img = sceneSvg();
+                let tiles = [];
+                let moves = 0;
+                let secs = 0;
+                let solved = false;
+                let timerId = 0;
+                let finishId = 0;
+                const tileEls = [];
+
+                const neighbors = (i) => {
+                    const r = Math.floor(i / N);
+                    const c = i % N;
+                    const out = [];
+                    if (r > 0) out.push(i - N);
+                    if (r < N - 1) out.push(i + N);
+                    if (c > 0) out.push(i - 1);
+                    if (c < N - 1) out.push(i + 1);
+                    return out;
+                };
+
+                function shuffleTiles() {
+                    tiles = Array.from({ length: N * N }, (_, i) => i);
+                    let blank = BLANK;
+                    let prev = -1;
+                    for (let k = 0; k < 160; k++) {
+                        const opts = neighbors(blank).filter((n) => n !== prev);
+                        const pick = opts[Math.floor(Math.random() * opts.length)];
+                        tiles[blank] = tiles[pick];
+                        tiles[pick] = BLANK;
+                        prev = blank;
+                        blank = pick;
+                    }
+                    if (tiles.every((v, i) => v === i)) shuffleTiles();
+                }
+
+                host.innerHTML =
+                    '<div class="hud">' + hudPill('Langkah', 'pz-moves', 0) + hudPill('Waktu', 'pz-time', '0:00') + '</div>' +
+                    '<div class="pz-board" id="pz-board"><div class="pz-field" id="pz-field"></div></div>' +
+                    '<p id="pz-msg" class="game-sub mt-4 text-center text-sm">Ketuk kepingan di sebelah ruang kosong untuk menggesernya.</p>' +
+                    '<div class="mt-3 flex flex-wrap justify-center gap-3"><button type="button" class="game-btn ghost" id="pz-hint">\u{1F441} Lihat Gambar Acuan</button>' +
+                    '<button type="button" class="game-btn ghost" id="pz-shuffle">\u{1F500} Acak Ulang</button></div>' +
+                    '<div id="pz-preview" class="mt-4 hidden text-center"><img alt="Gambar acuan: gapura candi bentar Blambangan dengan gunung, laut, dan perahu layar" class="mx-auto w-44 rounded-xl border-2 border-gold shadow-lg"></div>';
+                $('#pz-preview img', host).src = img;
+
+                const field = $('#pz-field', host);
+                const board = $('#pz-board', host);
+
+                for (let v = 0; v <= BLANK; v++) {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'pz-tile';
+                    btn.setAttribute('aria-label', 'Kepingan ' + (v + 1));
+                    const pic = document.createElement('span');
+                    pic.className = 'pz-img';
+                    pic.style.backgroundImage = 'url("' + img + '")';
+                    pic.style.backgroundSize = (N * 100) + '% ' + (N * 100) + '%';
+                    pic.style.backgroundPosition = ((v % N) * 100 / (N - 1)) + '% ' + (Math.floor(v / N) * 100 / (N - 1)) + '%';
+                    const no = document.createElement('span');
+                    no.className = 'pz-no';
+                    no.textContent = String(v + 1);
+                    btn.append(pic, no);
+                    btn.addEventListener('click', () => move(v));
+                    if (v === BLANK) { btn.style.display = 'none'; btn.tabIndex = -1; btn.setAttribute('aria-hidden', 'true'); }
+                    field.appendChild(btn);
+                    tileEls[v] = btn;
+                }
+
+                function layout() {
+                    tiles.forEach((v, pos) => {
+                        tileEls[v].style.left = (pos % N) * (100 / N) + '%';
+                        tileEls[v].style.top = Math.floor(pos / N) * (100 / N) + '%';
+                    });
+                }
+
+                function move(v) {
+                    if (solved) return;
+                    const pos = tiles.indexOf(v);
+                    const blank = tiles.indexOf(BLANK);
+                    if (!neighbors(blank).includes(pos)) return;
+                    tiles[blank] = v;
+                    tiles[pos] = BLANK;
+                    moves += 1;
+                    $('#pz-moves', host).textContent = String(moves);
+                    layout();
+                    if (tiles.every((t, i) => t === i)) {
+                        solved = true;
+                        clearInterval(timerId);
+                        tileEls.forEach((el) => { el.tabIndex = -1; });
+                        tileEls[BLANK].style.display = 'block';
+                        setTimeout(() => board.classList.add('won'), 250);
+                        burst(40);
+                        $('#pz-msg', host).innerHTML = '<span class="win-banner inline-block rounded-full bg-gold px-4 py-1.5 font-bold text-ink">Gapura utuh kembali! Hebat!</span>';
+                        announce('Puzzle selesai dalam ' + moves + ' langkah.');
+                        finishId = setTimeout(() => done(Math.round(clamp(1000 - Math.max(0, moves - 25) * 8 - secs * 2, 250, 1000)), moves + ' langkah dalam ' + fmtTime(secs)), 2200);
+                    }
+                }
+
+                function startRound() {
+                    shuffleTiles();
+                    moves = 0;
+                    secs = 0;
+                    $('#pz-moves', host).textContent = '0';
+                    $('#pz-time', host).textContent = '0:00';
+                    layout();
+                    clearInterval(timerId);
+                    timerId = setInterval(() => {
+                        secs += 1;
+                        const el = $('#pz-time', host);
+                        if (el) el.textContent = fmtTime(secs);
+                    }, 1000);
+                }
+
+                $('#pz-hint', host).addEventListener('click', () => {
+                    const p = $('#pz-preview', host);
+                    p.classList.toggle('hidden');
+                    $('#pz-hint', host).textContent = (p.classList.contains('hidden') ? '\u{1F441} Lihat' : '\u{1F648} Sembunyikan') + ' Gambar Acuan';
+                });
+                $('#pz-shuffle', host).addEventListener('click', () => { if (!solved) startRound(); });
+                startRound();
+                return { destroy() { clearInterval(timerId); clearTimeout(finishId); } };
+            }
+
+            /* ---------- Game 2: Kartu pasangan (kartu 3D yang bisa dibalik) ---------- */
+            function createMemoryGame(host, done) {
+                const PAIRS = [
+                    ['Prabu Tawang Alun', 'Raja abad ke-17, berpusat di Macanputih'],
+                    ['Wong Agung Wilis', 'Pemimpin perlawanan melawan VOC tahun 1767'],
+                    ['Pangeran Jagapati', 'Pemimpin Perang Bayu (Mas Rempeg)'],
+                    ['Puputan', 'Bertempur habis-habisan, pantang menyerah'],
+                    ['Desa Bayu', 'Pusat pertempuran Perang Bayu, Songgon'],
+                    ['18 Desember 1771', 'Puncak Perang Bayu, Hari Jadi Banyuwangi']
+                ];
+                const cards = shuffle(PAIRS.flatMap((p, i) => [{ pid: i, text: p[0], term: true }, { pid: i, text: p[1], term: false }]));
+                const sun = '<svg viewBox="0 0 40 40" class="h-10 w-10" aria-hidden="true"><g fill="none" stroke="#e8c98a" stroke-width="2" stroke-linecap="round"><circle cx="20" cy="20" r="7" fill="#c8963e"/><path d="M20 3v6M20 31v6M3 20h6M31 20h6M8 8l4 4M28 28l4 4M32 8l-4 4M12 28l-4 4"/></g></svg>';
+                let open = [];
+                let found = 0;
+                let moves = 0;
+                let lock = false;
+                let flipId = 0;
+                let finishId = 0;
+
+                host.innerHTML = '<div class="hud">' + hudPill('Pasangan', 'mm-pairs', '0 / ' + PAIRS.length) + hudPill('Percobaan', 'mm-moves', 0) + '</div>' +
+                    '<div class="mem-grid" id="mem-grid">' + cards.map((c, i) =>
+                        '<button type="button" class="mem-card" data-i="' + i + '" aria-label="Kartu tertutup"><div class="mem-inner">' +
+                        '<div class="mem-face mem-front">' + sun + '</div>' +
+                        '<div class="mem-face mem-back ' + (c.term ? 'term' : '') + '"><span class="tag">' + (c.term ? 'Tokoh / Istilah' : 'Keterangan') + '</span><span class="txt">' + esc(c.text) + '</span></div>' +
+                        '</div></button>').join('') + '</div>' +
+                    '<p id="mm-msg" class="game-sub mt-4 text-center text-sm">Temukan semua pasangan tokoh/istilah dan keterangannya.</p>';
+
+                const els = Array.from(host.querySelectorAll('.mem-card'));
+
+                function setUp(i, up) {
+                    els[i].classList.toggle('up', up);
+                    els[i].setAttribute('aria-label', up ? cards[i].text : 'Kartu tertutup');
+                }
+
+                function flip(i) {
+                    if (lock || open.includes(i) || els[i].classList.contains('ok')) return;
+                    open.push(i);
+                    setUp(i, true);
+                    if (open.length < 2) return;
+                    moves += 1;
+                    $('#mm-moves', host).textContent = String(moves);
+                    const [a, b] = open;
+                    if (cards[a].pid === cards[b].pid) {
+                        found += 1;
+                        $('#mm-pairs', host).textContent = found + ' / ' + PAIRS.length;
+                        setTimeout(() => { els[a].classList.add('ok'); els[b].classList.add('ok'); }, 350);
+                        open = [];
+                        burst(10);
+                        if (found === PAIRS.length) {
+                            announce('Semua pasangan ditemukan.');
+                            burst(40);
+                            $('#mm-msg', host).innerHTML = '<span class="win-banner inline-block rounded-full bg-gold px-4 py-1.5 font-bold text-ink">Semua pasangan ditemukan!</span>';
+                            finishId = setTimeout(() => done(Math.round(clamp(1000 - Math.max(0, moves - 8) * 60, 250, 1000)), moves + ' percobaan'), 2000);
+                        }
+                    } else {
+                        lock = true;
+                        flipId = setTimeout(() => { els[a].classList.add('bad'); els[b].classList.add('bad'); }, 450);
+                        setTimeout(() => {
+                            [a, b].forEach((k) => { els[k].classList.remove('bad'); setUp(k, false); });
+                            open = [];
+                            lock = false;
+                        }, 1250);
+                    }
+                }
+
+                host.addEventListener('click', (e) => {
+                    const b = e.target.closest('.mem-card');
+                    if (b) flip(Number(b.dataset.i));
+                });
+                return { destroy() { clearTimeout(flipId); clearTimeout(finishId); lock = true; } };
+            }
+
+            const GAME_ENGINES = { puzzle: createPuzzleGame, memory: createMemoryGame };
 
             function createGameView(round) {
                 const ac = new AbortController();
-                const { timeMs: TIME_MS, feedbackMs: FEEDBACK_MS } = GAME_CONFIG;
-                const POOL = GAME_ROUNDS[round].pool;
-                const TOTAL = POOL.length;
-                const G = () => state.game.rounds[round];
+                const key = GAME_ROUNDS[round].game;
+                const meta = GAME_META[key];
                 let root = null;
-                let phase = 'intro'; // intro | question | feedback | result
-                let deck = [];
-                let idx = 0;
-                let score = 0;
-                let shownScore = 0;
-                let streak = 0;
-                let bestStreak = 0;
-                let correctCount = 0;
-                let deadline = 0;
-                let leftAtAnswer = 0;
-                let lastResult = null;
-                let timerId = 0;
-                let advanceId = 0;
-                let tweenId = 0;
-                let newBest = false;
+                let active = null;
 
-                function stopTimer() { if (timerId) { clearInterval(timerId); timerId = 0; } }
-                function stopAdvance() { if (advanceId) { clearTimeout(advanceId); advanceId = 0; } }
-                function stopTween() { if (tweenId) { cancelAnimationFrame(tweenId); tweenId = 0; } }
-                function settleScore() { stopTween(); shownScore = score; }
+                const G = () => state.game.rounds[round];
+                const nextLabel = 'Lanjut ke Bab ' + (round + 2);
+                const stopActive = () => { if (active) { active.destroy(); active = null; } };
+                const head = (label) => '<p class="text-sm font-semibold uppercase tracking-widest text-gold">Mini Game ' + (round + 1) + ' dari ' + GAME_ROUNDS.length + ' &middot; ' + label + '</p>';
 
-                function introHtml() {
-                    const best = G().best;
-                    return '<div class="mx-auto max-w-2xl"><div class="mb-6"><p class="text-sm font-semibold uppercase tracking-widest text-clay">Mini Game ' + (round + 1) + ' dari ' + GAME_ROUNDS.length + ' &middot; setelah Bab ' + (round + 1) + '</p>' +
-                        '<h1 data-focus tabindex="-1" class="font-display text-3xl font-bold text-bark">Kuis Kilat Blambangan</h1>' +
-                        '<p class="mt-1 text-bark/70">Jawab cepat dan tepat untuk mengumpulkan skor setinggi-tingginya.</p></div>' +
-                        '<div class="card p-6 sm:p-8"><h2 class="font-semibold text-bark">Aturan Main</h2>' +
-                        '<ul class="mt-3 space-y-2 text-bark/90">' +
-                        '<li class="flex gap-3"><span class="font-bold text-clay">1.</span><span>' + TOTAL + ' soal acak, masing-masing dengan waktu ' + (TIME_MS / 1000) + ' detik.</span></li>' +
-                        '<li class="flex gap-3"><span class="font-bold text-clay">2.</span><span>Jawaban benar bernilai 100 poin ditambah 10 poin untuk setiap detik tersisa.</span></li>' +
-                        '<li class="flex gap-3"><span class="font-bold text-clay">3.</span><span>Bonus +50 poin setiap jawaban benar beruntun mulai dari yang ketiga.</span></li>' +
-                        '<li class="flex gap-3"><span class="font-bold text-clay">4.</span><span>Jawaban salah atau waktu habis memutus rangkaian beruntunmu.</span></li></ul>' +
-                        '<div class="mt-5 rounded-xl bg-sand p-4 text-center"><p class="text-sm text-bark/70">Skor terbaikmu</p><p class="font-display text-3xl font-extrabold text-bark">' + best + '</p></div>' +
-                        '<div class="mt-6 flex flex-wrap gap-3"><button type="button" data-action="start" data-focus-start class="btn btn-primary">Mulai Bermain</button>' +
-                        (G().plays > 0 ? '<button type="button" data-action="to-next" class="btn btn-secondary">Lanjut ke Bab ' + (round + 2) + '</button>' : '') + '</div></div></div>';
+                function showIntro() {
+                    stopActive();
+                    root.innerHTML = '<div class="mx-auto max-w-3xl"><div class="game-stage text-center">' +
+                        '<div class="relative">' + head('setelah Bab ' + (round + 1)) +
+                        '<div class="mt-3 text-5xl" aria-hidden="true">' + meta.icon + '</div>' +
+                        '<h1 data-focus tabindex="-1" class="game-title mt-2 text-3xl sm:text-4xl">' + esc(meta.title) + '</h1>' +
+                        '<p class="game-sub mx-auto mt-2 max-w-xl">' + esc(meta.desc) + '</p>' +
+                        '<div class="game-panel mx-auto mt-5 max-w-md text-left"><p class="text-sm font-bold uppercase tracking-widest text-gold">Cara Bermain</p><ol class="mt-2 space-y-1.5 text-sm">' +
+                        meta.rules.map((r, i) => '<li class="flex gap-2"><span class="font-bold text-gold">' + (i + 1) + '.</span><span>' + esc(r) + '</span></li>').join('') + '</ol></div>' +
+                        '<p class="game-sub mt-4 text-sm">Skor terbaikmu: <strong class="text-gold">' + G().best + '</strong></p>' +
+                        '<div class="mt-5 flex flex-wrap justify-center gap-3"><button type="button" data-action="start" data-focus-start class="game-btn gold">Mulai Bermain</button>' +
+                        (G().plays > 0 ? '<button type="button" data-action="to-next" class="game-btn ghost">' + nextLabel + ' &rarr;</button>' : '') + '</div></div></div></div>';
                 }
 
-                function questionHtml() {
-                    const q = deck[idx];
-                    const feedback = phase === 'feedback';
-                    const left = feedback ? leftAtAnswer : TIME_MS;
-                    const options = q.opts.map((o, k) => {
-                        let cls = 'border-clay/20 bg-white hover:border-clay hover:bg-sand';
-                        let badge = 'bg-sand text-bark';
-                        if (feedback) {
-                            if (o.correct) { cls = 'border-moss bg-moss-light'; badge = 'bg-moss text-white'; }
-                            else if (k === lastResult.picked) { cls = 'border-brick bg-brick-light'; badge = 'bg-brick text-white'; }
-                            else { cls = 'border-transparent bg-white/60 opacity-70'; }
-                        }
-                        return '<button type="button" data-action="answer" data-index="' + k + '"' + (feedback ? ' disabled' : '') +
-                            ' class="flex w-full items-start gap-3 rounded-xl border-2 px-4 py-3 text-left transition ' + cls + '">' +
-                            '<span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-sm font-bold ' + badge + '">' + LETTERS[k] + '</span>' +
-                            '<span class="pt-0.5">' + esc(o.text) + '</span></button>';
-                    }).join('');
-
-                    let feedbackHtml = '';
-                    if (feedback) {
-                        const ok = lastResult.ok;
-                        feedbackHtml = '<div class="mt-5 rounded-xl p-4 ' + (ok ? 'bg-moss-light text-moss' : 'bg-brick-light text-brick') + '">' +
-                            '<p class="font-semibold">' + (ok ? 'Benar! +' + lastResult.gain + ' poin' : (lastResult.timedOut ? 'Waktu habis!' : 'Kurang tepat.')) + '</p>' +
-                            (ok ? '' : '<p class="mt-1 text-sm">Jawaban benar: <strong>' + esc(q.opts.find((o) => o.correct).text) + '</strong></p>') +
-                            '<p class="mt-1 text-sm text-ink/80">' + esc(q.explain) + '</p>' +
-                            '<button type="button" data-action="advance" class="btn btn-primary mt-3">' + (idx + 1 >= TOTAL ? 'Lihat Hasil' : 'Soal Berikutnya') + ' &rarr;</button></div>';
-                    }
-
-                    const barColor = left / TIME_MS > 0.5 ? '#4f6b3a' : (left / TIME_MS > 0.25 ? '#c8963e' : '#a63a2b');
-                    const cardFx = feedback ? (lastResult.ok ? ' fx-correct' : ' fx-wrong') : '';
-
-                    return '<div class="mx-auto max-w-2xl"><h1 data-focus tabindex="-1" class="sr-only">Kuis Kilat Blambangan</h1>' +
-                        '<div class="mb-4 flex items-center justify-between gap-3">' +
-                        '<div><p class="text-xs font-semibold uppercase tracking-widest text-clay">Soal</p><p class="text-xl font-extrabold text-bark">' + (idx + 1) + ' / ' + TOTAL + '</p></div>' +
-                        '<div class="flex items-center gap-2' + (streak >= 3 ? '' : ' opacity-60') + '"><span class="rounded-full bg-gold px-3 py-1 text-sm font-bold text-ink">Beruntun x' + streak + '</span></div>' +
-                        '<div class="relative text-right"><p class="text-xs font-semibold uppercase tracking-widest text-clay">Skor</p><p id="score-value" class="text-xl font-extrabold text-bark" aria-live="off">' + shownScore + '</p>' +
-                        (feedback && lastResult.ok ? '<span class="gain-pop absolute right-0 top-full text-sm font-bold text-moss">+' + lastResult.gain + '</span>' : '') + '</div></div>' +
-                        '<div class="mb-4 flex items-center gap-3"><div class="h-3 flex-1 overflow-hidden rounded-full bg-sand" role="progressbar" aria-label="Sisa waktu">' +
-                        '<div id="timer-bar" class="h-3 rounded-full" style="width:' + (left / TIME_MS * 100) + '%;background-color:' + barColor + ';transition:width .1s linear"></div></div>' +
-                        '<span id="timer-text" class="w-10 text-right text-sm font-bold tabular-nums text-bark">' + Math.ceil(left / 1000) + 's</span></div>' +
-                        '<div class="card p-5 sm:p-8' + cardFx + '"><h2 class="text-xl font-semibold leading-snug text-bark">' + esc(q.q) + '</h2>' +
-                        '<div class="mt-5 space-y-3">' + options + '</div>' + feedbackHtml + '</div>' +
-                        '<p class="mt-3 hidden text-center text-xs text-bark/50 sm:block">Tips: tekan 1-4 untuk menjawab cepat.</p></div>';
+                function start() {
+                    stopActive();
+                    root.innerHTML = '<div class="mx-auto max-w-3xl"><div class="game-stage">' +
+                        '<div class="mb-4 text-center">' + head(esc(meta.title)) + '</div><div id="game-host"></div></div></div>';
+                    active = GAME_ENGINES[key]($('#game-host', root), finish);
+                    window.scrollTo({ top: 0, left: 0 });
                 }
 
-                function resultHtml() {
-                    const rank = gameRank(score, TOTAL);
-                    const accuracy = pct(correctCount, TOTAL);
-                    return '<div class="mx-auto max-w-2xl"><div class="card p-6 text-center sm:p-10">' +
-                        '<p class="text-sm font-semibold uppercase tracking-widest text-clay">Permainan Selesai</p>' +
-                        '<h1 data-focus tabindex="-1" class="mt-1 font-display text-3xl font-bold text-bark">' + esc(rank.title) + '</h1>' +
-                        '<p class="mt-1 text-bark/70">' + esc(rank.note) + '</p>' +
-                        '<p class="mt-6 font-display text-6xl font-extrabold text-bark">' + score + '</p><p class="text-sm text-bark/60">poin' + (newBest ? ' &middot; <strong class="text-moss">Rekor baru!</strong>' : '') + '</p>' +
-                        '<dl class="mt-6 grid grid-cols-3 gap-3 text-center">' +
-                        '<div class="rounded-xl bg-sand p-3"><dt class="text-xs text-bark/60">Benar</dt><dd class="text-lg font-bold text-bark">' + correctCount + '/' + TOTAL + '</dd></div>' +
-                        '<div class="rounded-xl bg-sand p-3"><dt class="text-xs text-bark/60">Akurasi</dt><dd class="text-lg font-bold text-bark">' + accuracy + '%</dd></div>' +
-                        '<div class="rounded-xl bg-sand p-3"><dt class="text-xs text-bark/60">Beruntun terbaik</dt><dd class="text-lg font-bold text-bark">x' + bestStreak + '</dd></div></dl>' +
-                        '<p class="mt-4 text-sm text-bark/70">Skor terbaik: <strong>' + G().best + '</strong></p>' +
-                        '<div class="mt-6 flex flex-wrap justify-center gap-3"><button type="button" data-action="start" class="btn btn-secondary">Main Lagi</button>' +
-                        '<button type="button" data-action="to-next" class="btn btn-primary">Lanjut ke Bab ' + (round + 2) + ' &rarr;</button></div></div></div>';
-                }
-
-                function render() {
-                    if (phase === 'intro') root.innerHTML = introHtml();
-                    else if (phase === 'result') root.innerHTML = resultHtml();
-                    else root.innerHTML = questionHtml();
-                }
-
-                function updateTimerUI(left) {
-                    const bar = $('#timer-bar', root);
-                    const text = $('#timer-text', root);
-                    if (bar) {
-                        bar.style.width = (left / TIME_MS * 100) + '%';
-                        bar.style.backgroundColor = left / TIME_MS > 0.5 ? '#4f6b3a' : (left / TIME_MS > 0.25 ? '#c8963e' : '#a63a2b');
-                    }
-                    if (text) text.textContent = Math.ceil(left / 1000) + 's';
-                }
-
-                function tick() {
-                    const left = Math.max(0, deadline - performance.now());
-                    updateTimerUI(left);
-                    if (left <= 0) {
-                        stopTimer();
-                        resolveAnswer(-1);
-                    }
-                }
-
-                function startTimer() {
-                    stopTimer();
-                    deadline = performance.now() + TIME_MS;
-                    timerId = setInterval(tick, 100);
-                }
-
-                function tweenScore(from, to) {
-                    stopTween();
-                    if (reducedMotion() || from === to) { shownScore = to; const el0 = $('#score-value', root); if (el0) el0.textContent = String(to); return; }
-                    const start = performance.now();
-                    const duration = 500;
-                    const step = (now) => {
-                        const t = clamp((now - start) / duration, 0, 1);
-                        shownScore = Math.round(from + (to - from) * t);
-                        const el = $('#score-value', root);
-                        if (!el) { tweenId = 0; return; }
-                        el.textContent = String(shownScore);
-                        tweenId = t < 1 ? requestAnimationFrame(step) : 0;
-                    };
-                    tweenId = requestAnimationFrame(step);
-                }
-
-                function startGame() {
-                    stopTimer(); stopAdvance(); stopTween();
-                    deck = shuffle(POOL).map((q) => ({
-                        q: q.q,
-                        explain: q.explain,
-                        opts: shuffle(q.options.map((text, i) => ({ text, correct: i === q.answer })))
-                    }));
-                    idx = 0; score = 0; shownScore = 0; streak = 0; bestStreak = 0; correctCount = 0; newBest = false;
-                    showQuestion();
-                }
-
-                function showQuestion() {
-                    phase = 'question';
-                    lastResult = null;
-                    render();
-                    startTimer();
-                    const h = $('[data-focus]', root);
-                    if (h) h.focus({ preventScroll: true });
-                }
-
-                function resolveAnswer(optIndex) {
-                    if (phase !== 'question') return;
-                    phase = 'feedback';
-                    stopTimer();
-                    leftAtAnswer = optIndex === -1 ? 0 : Math.max(0, deadline - performance.now());
-                    const chosen = deck[idx].opts[optIndex];
-                    const ok = !!(chosen && chosen.correct);
-                    let gain = 0;
-                    if (ok) {
-                        streak += 1;
-                        bestStreak = Math.max(bestStreak, streak);
-                        correctCount += 1;
-                        gain = 100 + Math.ceil(leftAtAnswer / 1000) * 10 + (streak >= 3 ? 50 : 0);
-                    } else {
-                        streak = 0;
-                    }
-                    lastResult = { picked: optIndex, ok, gain, timedOut: optIndex === -1 };
-                    const before = score;
-                    score += gain;
-                    render();
-                    tweenScore(before, score);
-                    if (ok) burst(16);
-                    announce(ok ? 'Benar, ' + gain + ' poin.' : (lastResult.timedOut ? 'Waktu habis.' : 'Jawaban salah.'));
-                    stopAdvance();
-                    advanceId = setTimeout(advance, FEEDBACK_MS);
-                }
-
-                function advance() {
-                    if (phase !== 'feedback') return;
-                    stopAdvance();
-                    settleScore();
-                    idx += 1;
-                    if (idx >= TOTAL) finishGame();
-                    else showQuestion();
-                }
-
-                function finishGame() {
-                    phase = 'result';
-                    stopTimer(); stopAdvance();
-                    settleScore();
-                    newBest = score > G().best;
-                    G().plays += 1;
-                    G().last = score;
-                    if (newBest) G().best = score;
+                function finish(score, summary) {
+                    const r = G();
+                    const newBest = score > r.best;
+                    r.plays += 1;
+                    r.last = score;
+                    if (newBest) r.best = score;
                     save();
                     renderStepper();
-                    render();
+                    stopActive();
+                    const rank = gameRank(score);
+                    root.innerHTML = '<div class="mx-auto max-w-2xl"><div class="game-stage text-center"><div class="relative">' +
+                        '<p class="text-sm font-semibold uppercase tracking-widest text-gold">Permainan Selesai</p>' +
+                        '<div class="mt-3 text-5xl" aria-hidden="true">\u{1F3C6}</div>' +
+                        '<h1 data-focus tabindex="-1" class="game-title mt-2 text-3xl sm:text-4xl">' + esc(rank.title) + '</h1>' +
+                        '<p class="game-sub mt-1">' + esc(rank.note) + '</p>' +
+                        '<p class="game-title mt-5 text-6xl">' + score + '</p><p class="text-sm text-sand/70">poin' + (newBest && r.plays > 1 ? ' &middot; <strong class="text-gold">Rekor baru!</strong>' : '') + '</p>' +
+                        '<div class="game-panel mx-auto mt-4 max-w-sm text-sm">' + esc(summary) + ' &middot; skor terbaik <strong class="text-gold">' + r.best + '</strong></div>' +
+                        '<div class="mt-6 flex flex-wrap justify-center gap-3"><button type="button" data-action="start" class="game-btn ghost">Main Lagi</button>' +
+                        '<button type="button" data-action="to-next" class="game-btn gold">' + nextLabel + ' &rarr;</button></div></div></div></div>';
                     announce('Permainan selesai. Skor ' + score + '.');
-                    if (correctCount >= 6) burst(40);
                     const h = $('[data-focus]', root);
                     if (h) h.focus({ preventScroll: true });
                     window.scrollTo({ top: 0, left: 0 });
@@ -1273,27 +1359,17 @@
                 return {
                     mount(el) {
                         root = el;
-                        phase = 'intro';
-                        render();
+                        showIntro();
                         root.addEventListener('click', (e) => {
                             const btn = e.target.closest('[data-action]');
                             if (!btn || !root.contains(btn) || btn.disabled) return;
-                            switch (btn.dataset.action) {
-                                case 'start': startGame(); break;
-                                case 'answer': if (phase === 'question') resolveAnswer(Number(btn.dataset.index)); break;
-                                case 'advance': advance(); break;
-                                case 'to-next': requestStage('bab' + (round + 2)); break;
-                                default: break;
-                            }
-                        }, { signal: ac.signal });
-                        document.addEventListener('keydown', (e) => {
-                            if (e.altKey || e.ctrlKey || e.metaKey || e.defaultPrevented || phase !== 'question') return;
-                            if (e.key >= '1' && e.key <= '4' && Number(e.key) - 1 < deck[idx].opts.length) resolveAnswer(Number(e.key) - 1);
+                            if (btn.dataset.action === 'start') start();
+                            if (btn.dataset.action === 'to-next') requestStage('bab' + (round + 2));
                         }, { signal: ac.signal });
                     },
                     destroy() {
                         ac.abort();
-                        stopTimer(); stopAdvance(); stopTween();
+                        stopActive();
                     }
                 };
             }
@@ -1308,7 +1384,7 @@
                         const rounds = state.game.rounds;
                         const totalBest = rounds.reduce((sum, r) => sum + r.best, 0);
                         const totalPlays = rounds.reduce((sum, r) => sum + r.plays, 0);
-                        const rank = gameRank(totalBest / rounds.length, GAME_ROUNDS[0].pool.length);
+                        const rank = gameRank(totalBest / rounds.length);
                         const stat = (label, value) => '<div class="rounded-xl bg-sand p-4"><dt class="text-sm text-bark/60">' + label + '</dt><dd class="text-2xl font-extrabold text-bark">' + value + '</dd></div>';
 
                         root.innerHTML =
